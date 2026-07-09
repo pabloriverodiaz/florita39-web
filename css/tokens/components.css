@@ -1,0 +1,233 @@
+/* ============================================================
+   Florita 39 — Component styles
+   Real CSS for the reusable primitives. JSX components apply
+   these classes; consumers get them by linking styles.css.
+   All values reference the design tokens.
+   ============================================================ */
+
+/* ---------------- Button ------------------------------------ */
+.f39-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-sm);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 0 var(--space-5);
+  height: 46px;
+  border: var(--border-width-strong) solid var(--color-primary);
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  color: var(--text-on-primary);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--duration-base) var(--ease-standard),
+              color var(--duration-base) var(--ease-standard),
+              border-color var(--duration-base) var(--ease-standard),
+              transform var(--duration-fast) var(--ease-standard);
+  white-space: nowrap;
+}
+.f39-btn:hover { text-decoration: none; }
+.f39-btn:active { transform: translateY(1px); }
+.f39-btn:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+.f39-btn[disabled], .f39-btn[aria-disabled="true"] {
+  opacity: .45; pointer-events: none;
+}
+.f39-btn--primary { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+.f39-btn--primary:hover { background: var(--color-primary-hover); border-color: var(--color-primary-hover); }
+.f39-btn--secondary { background: transparent; color: var(--color-primary); border-color: var(--color-primary); }
+.f39-btn--secondary:hover { background: var(--color-primary); color: #fff; }
+.f39-btn--ghost { background: transparent; color: var(--color-primary); border-color: transparent; padding-inline: var(--space-3); }
+.f39-btn--ghost:hover { background: var(--color-primary-soft); }
+.f39-btn--sand { background: var(--f39-sand-500); color: var(--f39-ink-900); border-color: var(--f39-sand-500); }
+.f39-btn--sand:hover { background: #b78d6f; border-color: #b78d6f; }
+.f39-btn--ondark { background: #fff; color: var(--color-primary); border-color: #fff; }
+.f39-btn--ondark:hover { background: transparent; color: #fff; border-color: #fff; }
+.f39-btn--sm { height: 38px; font-size: var(--text-xs); padding-inline: var(--space-4); }
+.f39-btn--lg { height: 54px; font-size: var(--text-base); padding-inline: var(--space-6); }
+.f39-btn--block { display: flex; width: 100%; }
+
+/* ---------------- Icon button ------------------------------- */
+.f39-iconbtn {
+  display: inline-grid; place-items: center;
+  width: 44px; height: 44px;
+  border-radius: var(--radius-pill);
+  border: var(--border-width) solid var(--border-hairline);
+  background: var(--surface-card);
+  color: var(--text-strong);
+  cursor: pointer;
+  transition: background var(--duration-base) var(--ease-standard),
+              border-color var(--duration-base) var(--ease-standard),
+              color var(--duration-base) var(--ease-standard);
+}
+.f39-iconbtn:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.f39-iconbtn:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+.f39-iconbtn--bare { border-color: transparent; background: transparent; }
+.f39-iconbtn--bare:hover { background: var(--color-primary-soft); border-color: transparent; }
+.f39-iconbtn--solid { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+.f39-iconbtn--solid:hover { background: var(--color-primary-hover); border-color: var(--color-primary-hover); color:#fff; }
+.f39-iconbtn--sm { width: 36px; height: 36px; }
+
+/* ---------------- Badge & Tag ------------------------------- */
+.f39-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-body); font-weight: var(--weight-medium);
+  font-size: var(--text-xs); letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  padding: 4px 10px; border-radius: var(--radius-pill);
+  background: var(--color-primary-soft); color: var(--color-primary);
+  line-height: 1.2;
+}
+.f39-badge--solid { background: var(--color-primary); color: #fff; }
+.f39-badge--sand { background: var(--f39-sand-100); color: #946f53; }
+.f39-badge--outline { background: transparent; box-shadow: inset 0 0 0 1px var(--border-hairline); color: var(--text-body); }
+.f39-badge--success { background: color-mix(in srgb, var(--f39-success) 14%, #fff); color: var(--f39-success); }
+.f39-badge--danger  { background: color-mix(in srgb, var(--f39-danger) 12%, #fff); color: var(--f39-danger); }
+
+.f39-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-body); font-size: var(--text-sm);
+  letter-spacing: .01em; color: var(--text-body);
+  padding: 6px 14px; border-radius: var(--radius-pill);
+  background: var(--surface-card);
+  border: var(--border-width) solid var(--border-hairline);
+  cursor: default;
+}
+.f39-tag--selected { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+.f39-tag--interactive { cursor: pointer; transition: border-color var(--duration-base) var(--ease-standard), color var(--duration-base) var(--ease-standard); }
+.f39-tag--interactive:hover { border-color: var(--color-primary); color: var(--color-primary); }
+
+/* ---------------- Eyebrow ----------------------------------- */
+.f39-eyebrow-el {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-body); font-weight: var(--weight-medium);
+  font-size: var(--text-eyebrow); letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase; color: var(--color-primary);
+}
+.f39-eyebrow-el::before {
+  content: ""; width: 26px; height: 1.5px; background: currentColor; opacity: .6;
+}
+.f39-eyebrow-el--plain::before { display: none; }
+
+/* ---------------- Form fields ------------------------------- */
+.f39-field { display: flex; flex-direction: column; gap: var(--space-2); font-family: var(--font-body); }
+.f39-label { font-size: var(--text-xs); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-body); font-weight: var(--weight-medium); }
+.f39-label .req { color: var(--f39-danger); margin-left: 3px; }
+.f39-hint { font-size: var(--text-xs); color: var(--text-muted); }
+.f39-hint--error { color: var(--f39-danger); }
+
+.f39-input, .f39-textarea, .f39-select {
+  font-family: var(--font-body); font-size: var(--text-base);
+  color: var(--text-strong); background: var(--surface-card);
+  border: var(--border-width) solid var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: 0 var(--space-4); height: 48px; width: 100%;
+  transition: border-color var(--duration-base) var(--ease-standard), box-shadow var(--duration-base) var(--ease-standard);
+}
+.f39-textarea { height: auto; padding: var(--space-3) var(--space-4); min-height: 110px; line-height: 1.55; resize: vertical; }
+.f39-input::placeholder, .f39-textarea::placeholder { color: var(--text-muted); }
+.f39-input:hover, .f39-textarea:hover, .f39-select:hover { border-color: var(--f39-blue-300); }
+.f39-input:focus, .f39-textarea:focus, .f39-select:focus {
+  outline: none; border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+.f39-input--invalid, .f39-textarea--invalid, .f39-select--invalid { border-color: var(--f39-danger); }
+.f39-input[disabled], .f39-textarea[disabled], .f39-select[disabled] { background: var(--f39-chukum); color: var(--text-muted); cursor: not-allowed; }
+
+.f39-select-wrap { position: relative; }
+.f39-select { appearance: none; -webkit-appearance: none; padding-right: 40px; cursor: pointer; }
+.f39-select-wrap::after {
+  content: ""; position: absolute; right: 16px; top: 50%; width: 9px; height: 9px;
+  border-right: 1.5px solid var(--text-body); border-bottom: 1.5px solid var(--text-body);
+  transform: translateY(-65%) rotate(45deg); pointer-events: none;
+}
+
+/* ---------------- Checkbox / Radio / Switch ----------------- */
+.f39-check { display: inline-flex; align-items: center; gap: var(--space-3); font-family: var(--font-body); font-size: var(--text-base); color: var(--text-body); cursor: pointer; }
+.f39-check input { position: absolute; opacity: 0; width: 0; height: 0; }
+.f39-check__box {
+  width: 22px; height: 22px; flex: none; border-radius: var(--radius-sm);
+  border: 1.5px solid var(--f39-blue-300); background: var(--surface-card);
+  display: grid; place-items: center;
+  transition: background var(--duration-base) var(--ease-standard), border-color var(--duration-base) var(--ease-standard);
+}
+.f39-check__box--radio { border-radius: var(--radius-pill); }
+.f39-check__box svg { opacity: 0; transition: opacity var(--duration-fast); }
+.f39-check input:checked + .f39-check__box { background: var(--color-primary); border-color: var(--color-primary); }
+.f39-check input:checked + .f39-check__box svg { opacity: 1; }
+.f39-check input:checked + .f39-check__box--radio { background: radial-gradient(circle at center, #fff 0 4px, var(--color-primary) 5px 100%); }
+.f39-check input:focus-visible + .f39-check__box { box-shadow: var(--shadow-focus); }
+.f39-check input:disabled ~ * { opacity: .5; }
+
+.f39-switch { display: inline-flex; align-items: center; gap: var(--space-3); font-family: var(--font-body); cursor: pointer; color: var(--text-body); }
+.f39-switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+.f39-switch__track {
+  width: 46px; height: 26px; border-radius: var(--radius-pill);
+  background: var(--f39-stone); position: relative; flex: none;
+  transition: background var(--duration-base) var(--ease-standard);
+}
+.f39-switch__track::after {
+  content: ""; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px;
+  border-radius: var(--radius-pill); background: #fff; box-shadow: var(--shadow-xs);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+.f39-switch input:checked + .f39-switch__track { background: var(--color-primary); }
+.f39-switch input:checked + .f39-switch__track::after { transform: translateX(20px); }
+.f39-switch input:focus-visible + .f39-switch__track { box-shadow: var(--shadow-focus); }
+
+/* ---------------- Card -------------------------------------- */
+.f39-card {
+  background: var(--surface-card);
+  border: var(--border-width) solid var(--border-hairline);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.f39-card--raised { border-color: transparent; box-shadow: var(--shadow-md); }
+.f39-card--flat { box-shadow: none; }
+.f39-card--interactive { transition: transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out); cursor: pointer; }
+.f39-card--interactive:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.f39-card__body { padding: var(--space-5); }
+.f39-card__media { position: relative; overflow: hidden; }
+.f39-card__media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--duration-slow) var(--ease-out); }
+.f39-card--interactive:hover .f39-card__media img { transform: scale(1.045); }
+
+/* ---------------- Avatar ------------------------------------ */
+.f39-avatar {
+  display: inline-grid; place-items: center; overflow: hidden;
+  width: 44px; height: 44px; border-radius: var(--radius-pill);
+  background: var(--color-primary); color: #fff;
+  font-family: var(--font-body); font-weight: var(--weight-medium); letter-spacing: .04em;
+  font-size: var(--text-sm); flex: none;
+}
+.f39-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.f39-avatar--sm { width: 32px; height: 32px; font-size: var(--text-xs); }
+.f39-avatar--lg { width: 64px; height: 64px; font-size: var(--text-lg); }
+.f39-avatar--sand { background: var(--f39-sand-500); color: var(--f39-ink-900); }
+
+/* ---------------- Tabs -------------------------------------- */
+.f39-tabs { display: flex; gap: var(--space-6); border-bottom: var(--border-width) solid var(--border-hairline); }
+.f39-tab {
+  appearance: none; background: none; border: none; cursor: pointer;
+  font-family: var(--font-body); font-size: var(--text-sm);
+  letter-spacing: var(--tracking-label); text-transform: uppercase;
+  color: var(--text-muted); padding: 0 0 var(--space-3); position: relative;
+  transition: color var(--duration-base) var(--ease-standard);
+}
+.f39-tab:hover { color: var(--text-strong); }
+.f39-tab--active { color: var(--color-primary); }
+.f39-tab--active::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
+  background: var(--color-primary);
+}
+
+/* ---------------- Divider ----------------------------------- */
+.f39-divider { border: none; height: 1px; background: var(--border-hairline); margin: var(--space-6) 0; }
+.f39-divider--mark { background: none; display: flex; align-items: center; justify-content: center; height: auto; }
+.f39-divider--mark::before, .f39-divider--mark::after { content: ""; flex: 1; height: 1px; background: var(--border-hairline); }
+.f39-divider--mark span { padding: 0 var(--space-4); color: var(--color-primary); font-family: var(--font-script); font-size: 22px; }
+
+/* ---------------- Rating ------------------------------------ */
+.f39-rating { display: inline-flex; align-items: center; gap: 3px; color: var(--f39-sand-500); }
+.f39-rating .f39-star--empty { color: var(--f39-stone); }

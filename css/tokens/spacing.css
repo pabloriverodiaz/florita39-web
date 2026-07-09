@@ -1,0 +1,53 @@
+/* ============================================================
+   Florita 39 — Spacing, radius, shadow, layout, motion
+   Calm, airy, generous whitespace — an intimate boutique feel.
+   ============================================================ */
+:root {
+  /* Spacing scale (4px base) */
+  --space-0: 0;
+  --space-1: 0.25rem;   /* 4  */
+  --space-2: 0.5rem;    /* 8  */
+  --space-3: 0.75rem;   /* 12 */
+  --space-4: 1rem;      /* 16 */
+  --space-5: 1.5rem;    /* 24 */
+  --space-6: 2rem;      /* 32 */
+  --space-7: 3rem;      /* 48 */
+  --space-8: 4rem;      /* 64 */
+  --space-9: 6rem;      /* 96 */
+  --space-10: 8rem;     /* 128 */
+
+  /* Radius — the brand reads soft but architectural; restrained
+     rounding. Pills for buttons echo the rounded balcony arches. */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 22px;
+  --radius-pill: 999px;
+
+  /* Borders */
+  --border-width: 1px;
+  --border-width-strong: 1.5px;
+
+  /* Shadows — low, warm, diffuse (soft tropical daylight), never
+     harsh. Tinted toward the ink, not pure grey/black. */
+  --shadow-xs: 0 1px 2px rgba(20, 32, 43, 0.06);
+  --shadow-sm: 0 2px 8px rgba(20, 32, 43, 0.07);
+  --shadow-md: 0 10px 28px rgba(20, 32, 43, 0.10);
+  --shadow-lg: 0 24px 60px rgba(20, 32, 43, 0.14);
+  --shadow-focus: 0 0 0 3px var(--focus-ring);
+
+  /* Layout */
+  --container-sm: 640px;
+  --container-md: 880px;
+  --container-lg: 1140px;
+  --container-xl: 1320px;
+  --header-height: 76px;
+
+  /* Motion — unhurried, resort-calm. Gentle ease, no bounce. */
+  --ease-standard: cubic-bezier(0.33, 0, 0.2, 1); /* @kind other */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+  --duration-fast: 140ms; /* @kind other */
+  --duration-base: 240ms; /* @kind other */
+  --duration-slow: 460ms; /* @kind other */
+}

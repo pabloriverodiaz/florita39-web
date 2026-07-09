@@ -1,0 +1,23 @@
+/* ============================================================
+   Florita 39 — Webfonts
+   ------------------------------------------------------------
+   Brand fonts per the manual:
+     · Titles / wordmark ...... "Beauty"  (elegant high-contrast
+                                 spurless display serif, all-caps)
+     · Body ................... "Biko"    (geometric humanist sans)
+     · Reinforcer "Hotel Boutique" ....... a hand-brushed script,
+                                 delivered as logo ARTWORK, not type.
+
+   None of the three are licensed on a webfont CDN, so the system
+   ships the closest Google Fonts substitutes. SUBSTITUTIONS — see
+   readme.md › Typography. Swap these @import lines for the real
+   licensed @font-face declarations when the .woff2 files arrive.
+
+     Beauty  -> Cormorant Garamond  (display serif, fine substitute
+                for the spurless high-contrast caps of the wordmark)
+     Biko    -> Jost                (Futura-adjacent geometric sans,
+                very close to Biko's even, circular forms)
+     script  -> Caveat              (incidental hand-script accent)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&family=Caveat:wght@500;600&display=swap');

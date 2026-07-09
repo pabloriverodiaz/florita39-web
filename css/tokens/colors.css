@@ -1,0 +1,65 @@
+/* ============================================================
+   Florita 39 — Color tokens
+   Palette sourced verbatim from the 2023 Manual de Identidad.
+   The brand is built on an oceanic blue scale (the Caribbean
+   around Isla Mujeres) anchored by a single deep navy, with a
+   warm "arena/chukum" sand as the only warm accent.
+   ============================================================ */
+:root {
+  /* --- Primary: Azul Florita (the one true brand blue) --- */
+  --f39-blue-900: #044F90;   /* primary — wordmark, headlines, UI accent   */
+  --f39-blue-700: #2B6FAE;   /* derived hover/active for the primary blue   */
+  --f39-blue-500: #498DC6;   /* secondary blue (manual swatch 2)            */
+  --f39-blue-400: #5FA7CD;   /* manual swatch 3                             */
+  --f39-blue-300: #83C3D7;   /* manual swatch 4                             */
+  --f39-blue-200: #A9D5DE;   /* manual swatch 5                             */
+  --f39-blue-100: #D2E8EB;   /* manual swatch 6 — palest wash               */
+
+  /* --- Warm accent: Arena / Chukum sand --- */
+  --f39-sand-500: #C6A187;   /* manual swatch 7 — terracotta-tan accent     */
+  --f39-sand-300: #DDC7B5;   /* lightened sand for fills                    */
+  --f39-sand-100: #F0E6DC;   /* faintest sand tint                          */
+
+  /* --- Chukum neutrals (Mayan plaster off-whites) + ink --- */
+  --f39-chukum:   #F4F0E9;   /* warm paper / plaster — primary canvas       */
+  --f39-shell:    #FBF9F5;   /* near-white surface                          */
+  --f39-stone:    #E7E0D5;   /* hairline / divider on warm grounds          */
+  --f39-ink-900:  #14202B;   /* near-black text (cool, not pure black)      */
+  --f39-ink-600:  #45525C;   /* secondary text                              */
+  --f39-ink-400:  #7C8893;   /* muted / captions                            */
+  --f39-white:    #FFFFFF;
+  --f39-black:    #0A0F14;
+
+  /* --- Status (kept within the maritime family) --- */
+  --f39-success:  #2F7D5B;
+  --f39-warning:  #C98A3C;
+  --f39-danger:   #B23A36;
+
+  /* ============================================================
+     Semantic aliases — reference THESE in components, not the
+     raw scale above.
+     ============================================================ */
+  --color-primary:        var(--f39-blue-900);
+  --color-primary-hover:  var(--f39-blue-700);
+  --color-primary-soft:   var(--f39-blue-100);
+  --color-accent:         var(--f39-sand-500);
+
+  --surface-page:         var(--f39-chukum);
+  --surface-card:         var(--f39-white);
+  --surface-raised:       var(--f39-shell);
+  --surface-inverse:      var(--f39-blue-900);
+  --surface-sand:         var(--f39-sand-100);
+
+  --text-strong:          var(--f39-ink-900);
+  --text-body:            var(--f39-ink-600);
+  --text-muted:           var(--f39-ink-400);
+  --text-on-primary:      var(--f39-white);
+  --text-on-sand:         var(--f39-ink-900);
+  --text-link:            var(--f39-blue-900);
+
+  --border-hairline:      var(--f39-stone);
+  --border-strong:        var(--f39-ink-900);
+  --border-primary:       var(--f39-blue-900);
+
+  --focus-ring:           color-mix(in srgb, var(--f39-blue-500) 55%, transparent);
+}

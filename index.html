@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Florita 39 — Hotel Boutique · Isla Mujeres</title>
+<meta name="description" content="Florita 39 — an intimate five-suite boutique hotel in the heart of Isla Mujeres. Rooftop pool, Zama Beach Club included, steps from Playa Norte and the Ultramar ferry.">
+<link rel="icon" type="image/png" href="assets/logos/florita-iso-blue.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="css/styles.css?v=2">
+<link rel="stylesheet" href="css/home.css?v=2">
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="lib/_ds_bundle.js"></script>
+<style>
+  html, body { margin: 0; background: var(--surface-page); }
+</style>
+<script>var F39_ASSETS = 'assets';</script>
+</head>
+<body>
+<div id="root"></div>
+<script src="lib/data.js"></script>
+<script src="lib/i18n.js"></script>
+<script type="text/babel" src="screens/Header.jsx"></script>
+<script type="text/babel" src="screens/Footer.jsx"></script>
+<script type="text/babel" src="screens/HomeScreen.jsx"></script>
+<script type="text/babel" src="screens/RoomsScreen.jsx"></script>
+<script type="text/babel" src="screens/RoomDetailScreen.jsx"></script>
+<script type="text/babel" src="screens/AmenitiesScreen.jsx"></script>
+<script type="text/babel" src="screens/ExperiencesScreen.jsx"></script>
+<script type="text/babel" src="screens/ZamaScreen.jsx"></script>
+<script type="text/babel" src="screens/IslandScreen.jsx"></script>
+<script type="text/babel" src="screens/RestaurantScreen.jsx"></script>
+<script type="text/babel" src="screens/GalleryScreen.jsx"></script>
+<script type="text/babel" src="screens/InfoScreens.jsx"></script>
+<script type="text/babel" src="screens/ReserveScreen.jsx"></script>
+<script type="text/babel" data-presets="react">
+function App() {
+  const [route, setRoute] = React.useState('home');
+  const onNav = (r) => { setRoute(r); window.scrollTo({ top: 0, behavior: 'auto' }); };
+  const base = route.split(':')[0];
+  const onImage = base === 'home';
+
+  let screen;
+  if (base === 'home') screen = <window.HomeScreen onNav={onNav} />;
+  else if (base === 'rooms') screen = <window.RoomsScreen onNav={onNav} />;
+  else if (base === 'room') screen = <window.RoomDetailScreen roomId={route.split(':')[1]} onNav={onNav} />;
+  else if (base === 'amenities') screen = <window.AmenitiesScreen onNav={onNav} />;
+  else if (base === 'experiences') screen = <window.ExperiencesScreen onNav={onNav} />;
+  else if (base === 'zama') screen = <window.ZamaScreen onNav={onNav} />;
+  else if (base === 'island') screen = <window.IslandScreen onNav={onNav} />;
+  else if (base === 'restaurant') screen = <window.RestaurantScreen onNav={onNav} />;
+  else if (base === 'gallery') screen = <window.GalleryScreen onNav={onNav} />;
+  else if (base === 'offers') screen = <window.OffersScreen onNav={onNav} />;
+  else if (base === 'about') screen = <window.AboutScreen onNav={onNav} />;
+  else if (base === 'contact') screen = <window.ContactScreen onNav={onNav} />;
+  else if (base === 'faq') screen = <window.FaqScreen onNav={onNav} />;
+  else if (base === 'reserve') screen = <window.ReserveScreen onNav={onNav} />;
+
+  return (
+    <div className="f39-site">
+      <window.Header route={base} onNav={onNav} onImage={onImage} />
+      {screen}
+      <window.Footer onNav={onNav} />
+    </div>
+  );
+}
+function boot() {
+  if (!window.HomeScreen || !window.Florita39DesignSystem_466e9b) { setTimeout(boot, 40); return; }
+  ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  setTimeout(() => window.lucide && window.lucide.createIcons(), 0);
+  setTimeout(() => window.F39initI18N && window.F39initI18N(), 90);
+}
+boot();
+</script>
+</body>
+</html>

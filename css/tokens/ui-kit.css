@@ -1,0 +1,58 @@
+/* ============================================================
+   Florita 39 — UI-kit layout styles (website chrome)
+   Page-level patterns used by the Website UI kit: header, hero,
+   sections, footer. Built on the same tokens as the primitives.
+   ============================================================ */
+
+/* ---- Site header ------------------------------------------- */
+.f39-site { font-family: var(--font-body); color: var(--text-body); }
+.f39-header {
+  position: sticky; top: 0; z-index: 40;
+  height: var(--header-height);
+  display: flex; align-items: center;
+  background: color-mix(in srgb, var(--f39-chukum) 86%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-hairline);
+}
+.f39-header--transparent {
+  background: transparent; border-bottom-color: transparent; position: absolute; left: 0; right: 0;
+}
+.f39-header__inner { width: 100%; max-width: var(--container-xl); margin-inline: auto; padding-inline: var(--space-6); display: flex; align-items: center; gap: var(--space-6); }
+.f39-nav { display: flex; gap: var(--space-6); margin-left: auto; }
+.f39-nav a {
+  font-size: var(--text-sm); letter-spacing: var(--tracking-label); text-transform: uppercase;
+  color: var(--text-body); text-decoration: none; transition: color var(--duration-base) var(--ease-standard);
+}
+.f39-nav a:hover, .f39-nav a.is-active { color: var(--color-primary); }
+.f39-header--onimage .f39-nav a { color: rgba(255,255,255,.9); }
+.f39-header--onimage .f39-nav a:hover, .f39-header--onimage .f39-nav a.is-active { color: #fff; }
+
+/* ---- Hero -------------------------------------------------- */
+.f39-hero { position: relative; min-height: 84vh; display: flex; align-items: flex-end; overflow: hidden; }
+.f39-hero__bg { position: absolute; inset: 0; }
+.f39-hero__bg img { width: 100%; height: 100%; object-fit: cover; }
+.f39-hero__scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(4,32,58,.34) 0%, rgba(4,32,58,0) 32%, rgba(4,32,58,.08) 58%, rgba(4,32,58,.62) 100%); }
+.f39-hero__inner { position: relative; width: 100%; max-width: var(--container-xl); margin-inline: auto; padding: var(--space-9) var(--space-6) var(--space-8); }
+.f39-hero__title { font-family: var(--font-display); color: #fff; text-transform: uppercase; letter-spacing: var(--tracking-hero); font-weight: 500; font-size: var(--text-hero); line-height: 1.02; margin: 0 0 var(--space-4); text-wrap: balance; }
+.f39-hero__sub { color: rgba(255,255,255,.92); font-size: var(--text-lg); max-width: 44ch; margin: 0 0 var(--space-6); line-height: 1.55; }
+
+/* ---- Section scaffolding ----------------------------------- */
+.f39-section { padding: var(--space-9) 0; }
+.f39-section--tight { padding: var(--space-8) 0; }
+.f39-section__head { max-width: 56ch; margin: 0 auto var(--space-7); text-align: center; }
+.f39-section__head .f39-eyebrow-el { justify-content: center; margin-bottom: var(--space-4); }
+.f39-section__title { font-family: var(--font-display); text-transform: uppercase; letter-spacing: var(--tracking-display); font-weight: 500; font-size: var(--text-display); color: var(--text-strong); margin: 0; line-height: 1.05; }
+.f39-lead { font-size: var(--text-lg); line-height: 1.7; color: var(--text-body); }
+
+/* ---- Footer ------------------------------------------------ */
+.f39-footer { background: var(--f39-blue-900); color: rgba(255,255,255,.78); padding: var(--space-9) 0 var(--space-6); }
+.f39-footer a { color: rgba(255,255,255,.78); text-decoration: none; }
+.f39-footer a:hover { color: #fff; }
+.f39-footer__grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: var(--space-6); }
+.f39-footer__title { font-family: var(--font-body); font-size: var(--text-xs); letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; color: rgba(255,255,255,.55); margin: 0 0 var(--space-4); }
+.f39-footer__col p, .f39-footer__col a { display: block; font-size: var(--text-sm); line-height: 1.9; }
+.f39-footer__rule { border: none; border-top: 1px solid rgba(255,255,255,.14); margin: var(--space-7) 0 var(--space-5); }
+
+/* ---- Misc ---------------------------------------------------*/
+.f39-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+.f39-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }

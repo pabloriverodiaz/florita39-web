@@ -1,0 +1,95 @@
+/* ============================================================
+   Florita 39 — Base element defaults + brand utilities
+   (Imported by styles.css. Tokens must load before this.)
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: var(--weight-regular);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-body);
+  color: var(--text-body);
+  background-color: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--text-strong);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-tight);
+  margin: 0 0 var(--space-4);
+}
+
+p { margin: 0 0 var(--space-4); }
+a { color: var(--text-link); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+img { max-width: 100%; display: block; }
+
+::selection { background: var(--f39-blue-200); color: var(--f39-ink-900); }
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-radius: var(--radius-sm);
+}
+
+/* ---- Brand typographic utilities --------------------------- */
+
+/* The signature letterspaced label used throughout the manual
+   (e.g. "WELCOME TO", "KNOW OUR"). */
+.f39-eyebrow {
+  font-family: var(--font-body);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+/* Big airy display caps mirroring the FLORITA 39 wordmark. */
+.f39-display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-display);
+  line-height: var(--leading-tight);
+  font-weight: var(--weight-medium);
+  color: var(--text-strong);
+}
+
+/* Incidental hand-script accent (the "Hotel Boutique" feel). */
+.f39-script {
+  font-family: var(--font-script);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-primary);
+}
+
+/* ---- Layout helpers ---------------------------------------- */
+.f39-container {
+  width: 100%;
+  max-width: var(--container-lg);
+  margin-inline: auto;
+  padding-inline: var(--space-5);
+}
+
+/* ---- Brand texture grounds (real artwork from the manual) --- */
+.f39-bg-chukum {
+  background-color: var(--f39-chukum);
+  background-image: url('../assets/textures/chukum.png');
+  background-size: cover;
+  background-position: center;
+}
+.f39-bg-waves {
+  background-color: var(--f39-blue-100);
+  background-image: url('../assets/textures/acuarela-waves.png');
+  background-size: cover;
+  background-position: center bottom;
+}
