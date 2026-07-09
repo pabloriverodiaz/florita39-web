@@ -17,22 +17,22 @@ function HomeScreen({ onNav }) {
   const suites = [
     { no: '01', id: 'loft-florita', title: 'Balcony Loft', who: 'Best for couples',
       text: 'An open loft with a queen bed and a balcony over Av. Hidalgo. No stairs — bright and serene.',
-      feats: ['Queen bed', 'Balcony', 'No stairs'], image: 'rooms/florita-1/04.jpg' },
+      feats: ['Queen bed', 'Balcony', 'No stairs'], image: 'rooms/florita-1/pro-01.jpg' },
     { no: '02', id: 'hidalgo-heritage', title: 'Hidalgo Heritage', who: 'Families · up to 4',
       text: 'A suite with a bedroom and a lounge with a second queen bed. Room for the whole family.',
-      feats: ['2 Queen beds', 'Lounge', 'Family'], image: 'rooms/florita-2/03.jpg' },
+      feats: ['2 Queen beds', 'Lounge', 'Family'], image: 'rooms/florita-2/pro-01.jpg' },
     { no: '03', id: 'playa-norte', title: 'Playa Norte Suite', who: 'Families · up to 4',
       text: 'A queen bed plus a second queen in the lounge. Comfortable, cool and superbly located.',
-      feats: ['2 Queen beds', 'Lounge', 'Kitchen'], image: 'rooms/florita-3/01.jpg' },
+      feats: ['2 Queen beds', 'Lounge', 'Kitchen'], image: 'rooms/florita-3/pro-01.jpg' },
     { no: '04', id: 'rubber-tree', title: 'Rubber Tree Retreat', who: 'Families · two levels',
       text: 'A two-level duplex with a private bedroom upstairs. More space and privacy for longer stays.',
-      feats: ['Duplex', 'Two levels', 'Private'], image: 'rooms/florita-4/06.jpg' },
+      feats: ['Duplex', 'Two levels', 'Private'], image: 'rooms/florita-4/pro-03.jpg' },
     { no: '05', id: 'isla-mujeres-duplex', title: 'Isla Mujeres Dúplex', who: 'Groups · two levels',
       text: 'A spacious duplex with a garden view and two levels. Our largest, for groups and big families.',
-      feats: ['Duplex', 'Two levels', 'Garden view'], image: 'rooms/florita-5/01.jpg' },
+      feats: ['Duplex', 'Two levels', 'Garden view'], image: 'rooms/florita-5/pro-01.jpg' },
     { no: '06', id: 'boutique-garden', title: 'Boutique Garden Suite', who: 'Couples · private garden',
       text: 'A ground-floor suite with a king bed and a private garden patio — a green willow view through floor-to-ceiling glass.',
-      feats: ['King bed', 'Private garden', 'Ground floor'], image: 'rooms/florita-6/01.jpg' },
+      feats: ['King bed', 'Private garden', 'Ground floor'], image: 'rooms/florita-6/pro-02.jpg' },
   ];
 
   const islandStrip = [
