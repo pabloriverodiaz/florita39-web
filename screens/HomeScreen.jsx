@@ -32,7 +32,7 @@ function HomeScreen({ onNav }) {
       feats: ['Duplex', 'Two levels', 'Garden view'], image: 'rooms/florita-5/pro-01.jpg' },
     { no: '06', id: 'boutique-garden', title: 'Boutique Garden Suite', who: 'Couples · private garden',
       text: 'A ground-floor suite with a king bed and a private garden patio — a green willow view through floor-to-ceiling glass.',
-      feats: ['King bed', 'Private garden', 'Ground floor'], image: 'rooms/florita-6/pro-02.jpg' },
+      feats: ['King bed', 'Private garden', 'Ground floor'], image: 'rooms/florita-6/pro-06.jpg' },
   ];
 
   const islandStrip = [
