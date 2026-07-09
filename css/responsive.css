@@ -1,0 +1,68 @@
+/* ============================================================
+   Florita 39 — Responsive layer
+   The base design system ships no media queries; this file adds
+   mobile behaviour for the header (hamburger), footer, grids and
+   the inline-styled grids used inside the inner-page screens.
+   ============================================================ */
+
+/* Hidden until mobile */
+.f39-burger { display: none; }
+.f39-mobmenu { display: none; }
+
+/* ---- Mobile header + hamburger menu ---- */
+@media (max-width: 900px) {
+  .f39-header__inner { gap: var(--space-4); }
+  .f39-nav { display: none !important; }
+  .f39-header__actions { display: none !important; }
+
+  .f39-burger {
+    display: inline-flex; flex-direction: column; justify-content: center; gap: 5px;
+    margin-left: auto; width: 44px; height: 40px; padding: 9px 9px;
+    border: none; background: transparent; cursor: pointer;
+  }
+  .f39-burger span { display: block; height: 2px; width: 100%; background: var(--text-strong); border-radius: 2px; transition: opacity .2s, transform .2s; }
+  .f39-header--onimage .f39-burger span { background: #fff; box-shadow: 0 1px 4px rgba(4,20,42,.55); }
+  .f39-header--open .f39-burger span { background: var(--text-strong); box-shadow: none; }
+
+  .f39-mobmenu {
+    display: block; position: absolute; top: 100%; left: 0; right: 0;
+    background: #fff; border-bottom: 1px solid var(--border-hairline);
+    box-shadow: 0 24px 44px -26px rgba(4,20,42,.5);
+    padding: var(--space-3) var(--space-6) var(--space-6);
+  }
+  .f39-mobmenu a {
+    display: block; padding: 14px 0; font-size: 1rem; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--text-strong); text-decoration: none; border-bottom: 1px solid var(--border-hairline);
+  }
+  .f39-mobmenu a.is-active { color: var(--color-primary); }
+  .f39-mobmenu__foot { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: var(--space-5); }
+}
+
+/* ---- Footer + design-system grids ---- */
+@media (max-width: 860px) {
+  .f39-footer__grid { grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+  .f39-grid-3, .f39-grid-2 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .f39-footer__grid { grid-template-columns: 1fr; }
+  .f39-grid-3, .f39-grid-2 { grid-template-columns: 1fr; }
+}
+
+/* ---- Inline-styled grids inside inner-page screens ----
+   Those screens set grid-template-columns via inline React styles, so the
+   override needs !important to win. Collapse everything to one column on phones. */
+@media (max-width: 760px) {
+  .f39-site [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+}
+
+/* ---- Containers / hero / section padding on small screens ---- */
+@media (max-width: 640px) {
+  .f39-container { padding-inline: 22px; }
+  .mega .wrap { padding: 0 22px; }
+  .f39-hero__inner { padding-left: 22px; padding-right: 22px; }
+  .f39-section { padding: var(--space-7) 0; }
+  .mega .block, .mega .intro { padding: 50px 0; }
+  .mega .promo .in { padding: 40px 26px; }
+  .mega .split .tx { padding: 34px 24px; }
+  .mega .hero .wrap { padding-top: 100px; padding-bottom: 56px; }
+}
