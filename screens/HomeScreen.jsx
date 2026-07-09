@@ -30,6 +30,9 @@ function HomeScreen({ onNav }) {
     { no: '05', id: 'isla-mujeres-duplex', title: 'Isla Mujeres Dúplex', who: 'Groups · two levels',
       text: 'A spacious duplex with a garden view and two levels. Our largest, for groups and big families.',
       feats: ['Duplex', 'Two levels', 'Garden view'], image: 'rooms/florita-5/01.jpg' },
+    { no: '06', id: 'boutique-garden', title: 'Boutique Garden Suite', who: 'Couples · private garden',
+      text: 'A ground-floor suite with a king bed and a private garden patio — a green willow view through floor-to-ceiling glass.',
+      feats: ['King bed', 'Private garden', 'Ground floor'], image: 'rooms/florita-6/01.jpg' },
   ];
 
   const islandStrip = [
@@ -58,7 +61,7 @@ function HomeScreen({ onNav }) {
           <div className="kick">Boutique Hotel · Isla Mujeres, Mexico</div>
           <h1>A home<br />by the sea<em>Your summer in Isla Mujeres starts here</em></h1>
           <div className="meta">
-            <span><b>5</b> suites with private entrances</span>
+            <span><b>6</b> suites with private entrances</span>
             <span><b>3 min</b> from the Ultramar ferry</span>
             <span><b>10 min</b> from Playa Norte</span>
             <span><b>Rooftop</b> pool &amp; club</span>
@@ -76,14 +79,14 @@ function HomeScreen({ onNav }) {
           <div>
             <div className="eyebrow">Welcome to Florita 39</div>
             <h2 className="sec">Boutique, not generic.</h2>
-            <p className="sec-lede">In the heart of the island, steps from the malecón and the ferry, Florita 39 is a small five-suite hotel with a character of its own: sage-green stucco, chukum details, a tropical garden and a rooftop pool to watch the sun go down. A home by the sea, made to stay a while.</p>
+            <p className="sec-lede">In the heart of the island, steps from the malecón and the ferry, Florita 39 is a small six-suite hotel with a character of its own: sage-green stucco, chukum details, a tropical garden and a rooftop pool to watch the sun go down. A home by the sea, made to stay a while.</p>
             <div className="btns">
               <a href="#suites" className="btn btn-sand">See the suites</a>
               <button className="btn" style={{ background: 'var(--stone)', color: 'var(--ink-900)' }} onClick={() => onNav('island')}>Discover the island</button>
             </div>
           </div>
           <div className="stats">
-            <div className="c"><div className="n">5</div><div className="l">Unique suites with private entrances</div></div>
+            <div className="c"><div className="n">6</div><div className="l">Unique suites with private entrances</div></div>
             <div className="c"><div className="n">4.7★</div><div className="l">Guest rating</div></div>
             <div className="c"><div className="n">3 min</div><div className="l">Walk to the Ultramar ferry</div></div>
             <div className="c"><div className="n">∞</div><div className="l">Sunsets from the rooftop</div></div>
@@ -94,7 +97,7 @@ function HomeScreen({ onNav }) {
       {/* ===== SUITES ===== */}
       <section className="block alt" id="suites">
         <div className="wrap">
-          <div className="eyebrow">The suites · Five models</div>
+          <div className="eyebrow">The suites · Six models</div>
           <h2 className="sec">Find your own.</h2>
           <p className="sec-lede">From an intimate loft for two to duplexes and family suites with two beds. Each model has its own character — choose by trip, not by category.</p>
           <div className="suites">

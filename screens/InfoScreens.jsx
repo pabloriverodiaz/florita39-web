@@ -47,7 +47,7 @@ function AboutScreen({ onNav }) {
               <Eyebrow>The concept</Eyebrow>
               <h2 className="f39-section__title" style={{ textAlign: 'left', margin: '16px 0 20px' }}>Intimate by design</h2>
               <p className="f39-lead">Florita 39 was designed to preserve the original sense of a home — with special attention to detail, architecture and comfort.</p>
-              <p style={{ marginTop: 16, color: 'var(--text-body)' }}>Five suites with private entrances, a rooftop pool and club, a tropical garden and a genuine care for the island and its environment. For those who seek the privacy of a boutique hotel and a truly memorable stay.</p>
+              <p style={{ marginTop: 16, color: 'var(--text-body)' }}>Six suites with private entrances, a rooftop pool and club, a tropical garden and a genuine care for the island and its environment. For those who seek the privacy of a boutique hotel and a truly memorable stay.</p>
               <div style={{ marginTop: 26 }}><Button variant="secondary" onClick={() => onNav('rooms')}>See the rooms</Button></div>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
