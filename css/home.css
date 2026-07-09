@@ -79,13 +79,13 @@ html{scroll-behavior:smooth;}
 /* ---- PROMO ---- */
 .mega .promo{position:relative;border-radius:6px;overflow:hidden;color:#fff;margin-top:8px;}
 .mega .promo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-.mega .promo .v{position:absolute;inset:0;background:linear-gradient(110deg,rgba(4,28,52,.88) 0%,rgba(4,28,52,.55) 55%,rgba(4,28,52,.15) 100%);}
+.mega .promo .v{position:absolute;inset:0;background:linear-gradient(110deg,rgba(4,24,46,.94) 0%,rgba(4,24,46,.72) 48%,rgba(4,24,46,.40) 100%);}
 .mega .promo .in{position:relative;padding:60px 56px;max-width:680px;}
 .mega .promo .badge{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;width:120px;height:120px;border-radius:50%;background:var(--sand-500);color:var(--ink-900);transform:rotate(-8deg);margin-bottom:22px;}
 .mega .promo .badge b{font-family:var(--disp);font-size:2.6rem;line-height:.85;font-weight:600;}
 .mega .promo .badge span{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;}
-.mega .promo h3{font-family:var(--disp);font-size:clamp(2rem,4vw,3rem);font-weight:500;line-height:1.02;text-transform:uppercase;letter-spacing:.02em;}
-.mega .promo p{color:rgba(255,255,255,.92);margin:12px 0 0;max-width:46ch;}
+.mega .promo h3{font-family:var(--disp);font-size:clamp(2rem,4vw,3rem);font-weight:500;line-height:1.02;text-transform:uppercase;letter-spacing:.02em;color:#fff;text-shadow:0 2px 24px rgba(4,20,42,.45);}
+.mega .promo p{color:#fff;margin:12px 0 0;max-width:46ch;text-shadow:0 1px 12px rgba(4,20,42,.4);}
 
 /* ---- ISLAND STRIP ---- */
 .mega .strip{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:38px;}
