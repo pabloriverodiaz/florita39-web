@@ -42,7 +42,7 @@ html{scroll-behavior:smooth;}
 .mega .btn:hover{transform:translateY(-1px);}
 .mega .btn-pri{background:var(--blue-900);color:#fff;}
 .mega .btn-pri .dot{width:9px;height:9px;border-radius:50%;background:var(--sand-300);}
-.mega .btn-gho{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.5);backdrop-filter:blur(4px);}
+.mega .btn-gho{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.5);}
 .mega .btn-sand{background:var(--sand-500);color:var(--ink-900);}
 
 /* ---- INTRO STATS ---- */

@@ -10,8 +10,9 @@
   position: sticky; top: 0; z-index: 40;
   height: var(--header-height);
   display: flex; align-items: center;
-  background: color-mix(in srgb, var(--f39-chukum) 86%, transparent);
-  backdrop-filter: blur(10px);
+  /* Solid, no backdrop-filter: a sticky blurred header ghosts other sections
+     over opaque elements (footer) on iOS Safari on very long pages. */
+  background: var(--f39-chukum);
   border-bottom: 1px solid var(--border-hairline);
 }
 .f39-header--transparent {
@@ -46,7 +47,7 @@
 .f39-lead { font-size: var(--text-lg); line-height: 1.7; color: var(--text-body); }
 
 /* ---- Footer ------------------------------------------------ */
-.f39-footer { background: var(--f39-blue-900); color: rgba(255,255,255,.78); padding: var(--space-9) 0 var(--space-6); }
+.f39-footer { background: var(--f39-blue-900); color: rgba(255,255,255,.78); padding: var(--space-9) 0 var(--space-6); position: relative; z-index: 1; isolation: isolate; }
 .f39-footer a { color: rgba(255,255,255,.78); text-decoration: none; }
 .f39-footer a:hover { color: #fff; }
 .f39-footer__grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: var(--space-6); }
