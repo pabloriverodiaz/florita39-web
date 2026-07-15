@@ -1,18 +1,19 @@
 const RV = window.Florita39DesignSystem_466e9b;
 
 /* Florita 39 — Reserve screen.
-   Embeds the real Amenitiz booking engine (on the amenitiz.io subdomain, so it
-   keeps working after hotelflorita39.com is pointed at this new site).
-   URL lives in data.js › brand.booking. Bookings still register in Amenitiz. */
+   Links out to the real Amenitiz booking engine instead of embedding it.
+   The engine renders its own full page (its "FLORITA 39" hero + Select Your
+   Stay), which does not embed cleanly in an iframe and makes in-frame payment
+   fragile — so we send guests straight to it. The URL lives on the amenitiz.io
+   subdomain (data.js › brand.booking), so it survives pointing
+   hotelflorita39.com at this site. Language follows the site's EN/ES toggle. */
 function ReserveScreen({ onNav }) {
   const D = window.F39DATA;
   const { Eyebrow, Button, Icon } = RV;
   const [lang, setLang] = React.useState(window.F39_LANG === 'es' ? 'es' : 'en');
-  const CLIP = 118; // px cropped off the top of the Amenitiz engine (its nav + hero banner)
-  const src = (D.brand.booking && D.brand.booking[lang]) || 'https://florita39-1.amenitiz.io/es/booking/room';
-  const [blocked, setBlocked] = React.useState(false);
+  const url = (D.brand.booking && D.brand.booking[lang]) || 'https://florita39-1.amenitiz.io/es/booking/room';
 
-  // Keep the embedded engine in sync with the site's language toggle.
+  // Keep the booking link in sync with the site's language toggle.
   React.useEffect(() => {
     const h = (e) => setLang(e.detail === 'es' ? 'es' : 'en');
     window.addEventListener('f39:lang', h);
@@ -21,68 +22,40 @@ function ReserveScreen({ onNav }) {
 
   React.useEffect(() => { window.lucide && window.lucide.createIcons(); });
 
-  // If the engine refuses to be framed (X-Frame-Options / CSP), the iframe stays
-  // blank — after a grace period we surface the "open in a new tab" fallback.
-  React.useEffect(() => {
-    const t = setTimeout(() => {
-      const f = document.getElementById('f39-booking-frame');
-      if (f && f.dataset.loaded !== '1') setBlocked(true);
-    }, 6000);
-    return () => clearTimeout(t);
-  }, []);
+  const reassurance = ['Best rate, direct', 'Taxes included', 'Free cancellation on most dates'];
 
   return (
     <div style={{ paddingTop: 'var(--header-height)' }}>
-      <section className="f39-section" style={{ paddingBottom: 'var(--space-6)' }}>
-        <div className="f39-container" style={{ maxWidth: 'var(--container-lg)' }}>
-          <div className="f39-section__head" style={{ textAlign: 'center', marginBottom: 'var(--space-6)' }}>
-            <Eyebrow>Reserve</Eyebrow>
-            <h1 className="f39-section__title">Book your stay</h1>
-            <p className="f39-lead" style={{ maxWidth: '52ch', margin: '10px auto 0' }}>
-              Best rates, direct — taxes included and free cancellation on most dates.
-              Your booking is confirmed with our reservation system.
-            </p>
+      <section className="f39-section">
+        <div className="f39-container" style={{ maxWidth: 'var(--container-md)', textAlign: 'center' }}>
+          <Eyebrow>Reserve</Eyebrow>
+          <h1 className="f39-section__title">Book your stay</h1>
+          <p className="f39-lead" style={{ maxWidth: '54ch', margin: '10px auto 0' }}>
+            Check live availability and rates and book securely on our reservation system.
+            The best rates are always here, direct with us.
+          </p>
+
+          <div style={{ display: 'flex', gap: 22, flexWrap: 'wrap', justifyContent: 'center', margin: 'var(--space-6) 0' }}>
+            {reassurance.map((label) => (
+              <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--text-body)' }}>
+                <span style={{ color: 'var(--color-primary)' }}><Icon name="check" size={18} /></span>
+                <span style={{ fontWeight: 500, color: 'var(--text-strong)' }}>{label}</span>
+              </div>
+            ))}
           </div>
 
-          {/* The Amenitiz engine ships its own header + hero banner; we crop
-              CLIP px off the top so only the clean "select your stay" widget
-              shows inside our page. Tune CLIP if Amenitiz changes their layout. */}
-          <div className="f39-card f39-card--raised" style={{ overflow: 'hidden', padding: 0, background: 'var(--surface-card)' }}>
-            <div style={{ position: 'relative', height: 'min(1180px, calc(100vh - 40px))', overflow: 'hidden' }}>
-              <iframe
-                id="f39-booking-frame"
-                title="Florita 39 — Booking engine"
-                src={src}
-                key={src}
-                onLoad={(e) => { e.currentTarget.dataset.loaded = '1'; }}
-                loading="lazy"
-                allow="payment"
-                allowFullScreen
-                referrerPolicy="no-referrer-when-downgrade"
-                style={{ position: 'absolute', top: -CLIP, left: 0, width: '100%', height: 'calc(100% + ' + CLIP + 'px)', border: 0, display: 'block', background: 'var(--surface-card)' }}
-              />
-            </div>
-          </div>
-
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', alignItems: 'center', marginTop: 'var(--space-5)' }}>
-            <a href={src} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-              <Button variant="secondary" size="sm">Open the booking engine in a new tab</Button>
+          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center' }}>
+            <a href={url} rel="noopener" style={{ textDecoration: 'none' }}>
+              <Button variant="primary" size="lg">Check availability &amp; book</Button>
             </a>
             <a href={D.brand.whatsappUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-              <Button variant="ghost" size="sm">Book by WhatsApp</Button>
+              <Button variant="secondary" size="lg">Book by WhatsApp</Button>
             </a>
           </div>
 
-          {blocked && (
-            <div className="f39-card" style={{ marginTop: 'var(--space-5)', padding: '20px 22px', textAlign: 'center', background: 'var(--color-primary-soft)' }}>
-              <p style={{ margin: 0, color: 'var(--text-strong)' }}>
-                <strong>The booking engine opens in its own page.</strong>{' '}
-                <a href={src} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', fontWeight: 600 }}>
-                  Check availability &amp; book &rarr;
-                </a>
-              </p>
-            </div>
-          )}
+          <p style={{ fontSize: 'var(--text-sm)', color: 'var(--text-muted)', marginTop: 'var(--space-5)' }}>
+            You continue to our secure booking system to choose dates and pay.
+          </p>
         </div>
       </section>
     </div>
