@@ -1,0 +1,7 @@
+# SEO — preserve rankings from the old Amenitiz site's language URLs.
+# /es and /en (and their sub-pages) ranked in Google; 301 them to the new
+# homepage in the right language so the ranking transfers. ?lang= is read by i18n.js.
+/es        /?lang=es    301
+/es/*      /?lang=es    301
+/en        /?lang=en    301
+/en/*      /?lang=en    301
