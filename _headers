@@ -1,0 +1,6 @@
+# Florita 39 — cache policy (Netlify)
+# Filenames are not fingerprinted and some CSS is @imported without a version
+# query, so force revalidation on every load: edits always show immediately.
+# Netlify serves ETags, so unchanged files return a cheap 304 — not a full re-download.
+/*
+  Cache-Control: public, max-age=0, must-revalidate

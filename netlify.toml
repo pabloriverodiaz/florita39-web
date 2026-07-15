@@ -1,0 +1,5 @@
+# Netlify — Florita 39
+# Static site: plain HTML/CSS/JS, no build step (JSX is transformed in-browser).
+# The repo root IS the site, so publish from root.
+[build]
+  publish = "."
