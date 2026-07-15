@@ -14,10 +14,18 @@ function RestaurantScreen({ onNav }) {
         <div className="f39-container" style={{ maxWidth: 'var(--container-lg)' }}>
           <div className="f39-grid-3" style={{ rowGap: 'var(--space-7)' }}>
             {R.highlights.map((h) => (
-              <div key={h.label} className="f39-card" style={{ padding: 26, display: 'flex', flexDirection: 'column', gap: 12 }}>
-                <span style={{ color: 'var(--color-primary)' }}><Icon name={h.icon} size={26} /></span>
-                <span style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-h3)', color: 'var(--text-strong)' }}>{h.label}</span>
-                <span style={{ color: 'var(--text-muted)', fontSize: 'var(--text-sm)' }}>{h.note}</span>
+              <div key={h.label} className="f39-card" style={{ padding: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column', background: 'var(--surface-card)' }}>
+                {h.img && (
+                  <div style={{ height: 180, overflow: 'hidden' }}>
+                    <img src={F39_ASSETS + '/' + h.img} alt={h.label} loading="lazy"
+                         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                  </div>
+                )}
+                <div style={{ padding: 24, display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  <span style={{ color: 'var(--color-primary)' }}><Icon name={h.icon} size={22} /></span>
+                  <span style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-h3)', color: 'var(--text-strong)' }}>{h.label}</span>
+                  <span style={{ color: 'var(--text-muted)', fontSize: 'var(--text-sm)' }}>{h.note}</span>
+                </div>
               </div>
             ))}
           </div>

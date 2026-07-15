@@ -30,9 +30,9 @@ function Footer({ onNav }) {
           <div className="f39-footer__col">
             <p className="f39-footer__title">Visit</p>
             <p>{D.address}</p>
-            <a href="#" onClick={(e) => { e.preventDefault(); onNav('contact'); }}>Contact</a>
-            <a href="https://wa.me/5219991732538" target="_blank" rel="noreferrer">WhatsApp {D.whatsapp}</a>
-            <a href="https://instagram.com/florita_39" target="_blank" rel="noreferrer">{D.instagram}</a>
+            <a href={D.whatsappUrl} target="_blank" rel="noreferrer">Contact</a>
+            <a href={D.whatsappUrl} target="_blank" rel="noreferrer">WhatsApp {D.whatsapp}</a>
+            <a href={D.instagramUrl} target="_blank" rel="noreferrer">{D.instagram}</a>
           </div>
         </div>
         <hr className="f39-footer__rule" />

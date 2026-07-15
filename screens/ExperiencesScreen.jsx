@@ -55,7 +55,9 @@ function ExperiencesScreen({ onNav }) {
         <div className="f39-container" style={{ maxWidth: 'var(--container-lg)', textAlign: 'center', paddingTop: 40, paddingBottom: 40 }}>
           <Eyebrow>Plan with us</Eyebrow>
           <h2 className="f39-section__title" style={{ marginTop: 12, marginBottom: 18 }}>Tell us what you’d love to do</h2>
-          <Button variant="primary" onClick={() => onNav('contact')}>Contact the concierge</Button>
+          <a href="https://wa.me/5219991732538" target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
+            <Button variant="primary">Contact the concierge</Button>
+          </a>
         </div>
       </section>
     </div>
