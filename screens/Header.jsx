@@ -35,7 +35,7 @@ function Header({ route, onNav, onImage = false }) {
     <header className={'f39-header' + (imageMode ? ' f39-header--onimage f39-header--transparent' : '') + (open ? ' f39-header--open' : '')}>
       <div className="f39-header__inner">
         <a href="#" onClick={(e) => { e.preventDefault(); go('home'); }} style={{ display: 'flex' }} aria-label="Florita 39 — home">
-          <Logo variant="wordmark" color={imageMode ? 'white' : 'blue'} base={F39_ASSETS + '/logos'} height={24} />
+          <Logo variant="wordmark" color={imageMode ? 'white' : 'blue'} base={F39_ASSETS + '/logos'} height={36} />
         </a>
         <nav className="f39-nav">
           {links.map(([id, label]) => (

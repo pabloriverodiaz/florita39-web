@@ -3,7 +3,7 @@ const RD = window.Florita39DesignSystem_466e9b;
 function RoomDetailScreen({ roomId, onNav }) {
   const D = window.F39DATA;
   const room = D.rooms.find((r) => r.id === roomId) || D.rooms[0];
-  const { Eyebrow, Button, Tag, Badge, Icon, Input, Select, Divider } = RD;
+  const { Eyebrow, Button, Tag, Icon, Divider } = RD;
   const gallery = room.gallery || [room.image];
   const [main, setMain] = React.useState(room.image);
   React.useEffect(() => { setMain(room.image); }, [roomId]);
@@ -60,22 +60,16 @@ function RoomDetailScreen({ roomId, onNav }) {
               </div>
             </div>
 
-            {/* RIGHT — booking card */}
+            {/* RIGHT — booking CTA. No price/dates here: live rates & availability
+                live in the Amenitiz engine, so nothing needs to stay in sync. */}
             <aside className="f39-card f39-card--raised" style={{ padding: 24, position: 'sticky', top: 'calc(var(--header-height) + 16px)' }}>
-              <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 6 }}>
-                <span style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-h2)', color: 'var(--text-strong)' }}>{room.price}</span>
-                <Badge variant="sand">{room.currency} / night</Badge>
-              </div>
+              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-h3)', margin: '0 0 6px', color: 'var(--text-strong)' }}>Book your stay</h3>
               <p style={{ fontSize: 'var(--text-sm)', color: 'var(--text-muted)', marginBottom: 18 }}>Taxes included · free cancellation</p>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-                <Input label="Check in" type="date" />
-                <Input label="Check out" type="date" />
-              </div>
-              <Select label="Guests" options={[{value:'1',label:'1 guest'},{value:'2',label:'2 guests'},{value:'3',label:'3 guests'},{value:'4',label:'4 guests'}]} defaultValue="2" />
-              <div style={{ marginTop: 18 }}>
-                <Button variant="primary" block onClick={() => onNav('reserve')}>Reserve</Button>
-              </div>
-              <p style={{ textAlign: 'center', fontSize: 'var(--text-xs)', color: 'var(--text-muted)', marginTop: 12 }}>You won’t be charged yet</p>
+              <Button variant="primary" block onClick={() => onNav('reserve')}>Check availability</Button>
+              <a href={D.brand.whatsappUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block', marginTop: 12 }}>
+                <Button variant="secondary" block>Book by WhatsApp</Button>
+              </a>
+              <p style={{ textAlign: 'center', fontSize: 'var(--text-xs)', color: 'var(--text-muted)', marginTop: 14 }}>Live rates &amp; dates on our booking system</p>
             </aside>
 
           </div>

@@ -12,8 +12,8 @@ function RoomsScreen({ onNav }) {
       <section style={{ background: 'var(--f39-blue-900)', color: '#fff', padding: 'calc(var(--header-height) + 40px) 0 56px' }}>
         <div className="f39-container" style={{ maxWidth: 'var(--container-xl)' }}>
           <div className="f39-eyebrow-el" style={{ color: 'rgba(255,255,255,.85)', marginBottom: 14 }}>Know our rooms</div>
-          <h1 style={{ fontFamily: 'var(--font-display)', textTransform: 'uppercase', letterSpacing: '.08em', fontSize: 'var(--text-display)', margin: 0, color: '#fff', lineHeight: 1.04 }}>Rooms &amp; rates</h1>
-          <p style={{ color: 'rgba(255,255,255,.85)', maxWidth: '52ch', marginTop: 16, fontSize: 'var(--text-lg)' }}>Six intimate layouts, each with a kitchenette and the island a step away. Rates are per night, taxes included.</p>
+          <h1 style={{ fontFamily: 'var(--font-display)', textTransform: 'uppercase', letterSpacing: '.08em', fontSize: 'var(--text-display)', margin: 0, color: '#fff', lineHeight: 1.04 }}>Rooms</h1>
+          <p style={{ color: 'rgba(255,255,255,.85)', maxWidth: '52ch', marginTop: 16, fontSize: 'var(--text-lg)' }}>Six intimate layouts, each with a kitchenette and the island a step away.</p>
         </div>
       </section>
 
@@ -28,7 +28,6 @@ function RoomsScreen({ onNav }) {
             {D.rooms.map((r) => (
               <RoomCard key={r.id} name={r.name} model={r.model}
                 image={F39_ASSETS + '/' + r.image}
-                price={'from ' + r.price + ' ' + r.currency}
                 tags={r.tags.slice(0, 3)} ctaLabel="View room"
                 onClick={() => onNav('room:' + r.id)} />
             ))}
