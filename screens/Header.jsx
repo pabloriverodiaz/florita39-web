@@ -34,12 +34,12 @@ function Header({ route, onNav, onImage = false }) {
   return (
     <header className={'f39-header' + (imageMode ? ' f39-header--onimage f39-header--transparent' : '') + (open ? ' f39-header--open' : '')}>
       <div className="f39-header__inner">
-        <a href="#" onClick={(e) => { e.preventDefault(); go('home'); }} style={{ display: 'flex' }} aria-label="Florita 39 — home">
+        <a href={window.F39path('home')} onClick={(e) => { e.preventDefault(); go('home'); }} style={{ display: 'flex' }} aria-label="Florita 39 — home">
           <Logo variant="wordmark" color={imageMode ? 'white' : 'blue'} base={F39_ASSETS + '/logos'} height={36} />
         </a>
         <nav className="f39-nav">
           {links.map(([id, label]) => (
-            <a key={id} href="#" className={route === id ? 'is-active' : ''}
+            <a key={id} href={window.F39path(id)} className={route === id ? 'is-active' : ''}
                onClick={(e) => { e.preventDefault(); onNav(id); }}>{label}</a>
           ))}
         </nav>
@@ -55,7 +55,7 @@ function Header({ route, onNav, onImage = false }) {
       {open && (
         <div className="f39-mobmenu">
           {links.map(([id, label]) => (
-            <a key={id} href="#" className={route === id ? 'is-active' : ''}
+            <a key={id} href={window.F39path(id)} className={route === id ? 'is-active' : ''}
                onClick={(e) => { e.preventDefault(); go(id); }}>{label}</a>
           ))}
           <div className="f39-mobmenu__foot">

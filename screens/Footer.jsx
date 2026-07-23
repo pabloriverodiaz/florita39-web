@@ -14,18 +14,18 @@ function Footer({ onNav }) {
           </div>
           <div className="f39-footer__col">
             <p className="f39-footer__title">Explore</p>
-            <a href="#" onClick={(e) => { e.preventDefault(); onNav('rooms'); }}>Rooms &amp; rates</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); onNav('amenities'); }}>Amenities</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); onNav('restaurant'); }}>Dining</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); onNav('gallery'); }}>Gallery</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); onNav('offers'); }}>Offers</a>
+            <a href={window.F39path('rooms')} onClick={(e) => { e.preventDefault(); onNav('rooms'); }}>Rooms &amp; rates</a>
+            <a href={window.F39path('amenities')} onClick={(e) => { e.preventDefault(); onNav('amenities'); }}>Amenities</a>
+            <a href={window.F39path('restaurant')} onClick={(e) => { e.preventDefault(); onNav('restaurant'); }}>Dining</a>
+            <a href={window.F39path('gallery')} onClick={(e) => { e.preventDefault(); onNav('gallery'); }}>Gallery</a>
+            <a href={window.F39path('offers')} onClick={(e) => { e.preventDefault(); onNav('offers'); }}>Offers</a>
           </div>
           <div className="f39-footer__col">
             <p className="f39-footer__title">Island</p>
-            <a href="#" onClick={(e) => { e.preventDefault(); onNav('island'); }}>The island</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); onNav('experiences'); }}>Experiences &amp; tours</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); onNav('zama'); }}>Zama Beach Club</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); onNav('faq'); }}>FAQ</a>
+            <a href={window.F39path('island')} onClick={(e) => { e.preventDefault(); onNav('island'); }}>The island</a>
+            <a href={window.F39path('experiences')} onClick={(e) => { e.preventDefault(); onNav('experiences'); }}>Experiences &amp; tours</a>
+            <a href={window.F39path('zama')} onClick={(e) => { e.preventDefault(); onNav('zama'); }}>Zama Beach Club</a>
+            <a href={window.F39path('faq')} onClick={(e) => { e.preventDefault(); onNav('faq'); }}>FAQ</a>
           </div>
           <div className="f39-footer__col">
             <p className="f39-footer__title">Visit</p>
