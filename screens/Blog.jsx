@@ -20,6 +20,7 @@ const F39_BLOG_STR = {
   },
   read: { en: 'min read', es: 'min de lectura' },
   back: { en: 'All articles', es: 'Todos los artículos' },
+  more: { en: 'Keep reading', es: 'Sigue leyendo' },
 };
 
 function f39BlogDate(iso, lang) {
@@ -86,6 +87,28 @@ function BlogPostScreen({ slug, onNav }) {
                style={{ fontFamily: 'var(--font-body)', fontSize: '.9rem', textDecoration: 'underline', textUnderlineOffset: 3, color: 'var(--text-muted)' }}>
               ← {F39_BLOG_STR.back[lang]}
             </a>
+          </div>
+        </div>
+      </section>
+      <section className="f39-section" style={{ paddingTop: 0 }}>
+        <div className="f39-container" style={{ maxWidth: 'var(--container-xl)' }}>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', margin: '0 0 22px' }}>{F39_BLOG_STR.more[lang]}</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 20 }}>
+            {(() => {
+              const all = window.F39BLOG;
+              const i = all.findIndex((p) => p.slug === slug);
+              return [1, 2, 3].map((k) => all[(i + k) % all.length]);
+            })().map((p) => (
+              <a key={p.slug} href={window.F39path('blogpost:' + p.slug)} className="f39-card"
+                 onClick={(e) => { e.preventDefault(); onNav('blogpost:' + p.slug); }}
+                 style={{ padding: 0, overflow: 'hidden', textDecoration: 'none', color: 'inherit', display: 'block', background: 'var(--surface-card)' }}>
+                <img loading="lazy" decoding="async" src={F39_ASSETS + '/' + p.image} alt={p.title[lang]}
+                     style={{ width: '100%', height: 150, objectFit: 'cover', display: 'block' }} />
+                <div style={{ padding: '14px 16px 18px' }}>
+                  <h3 style={{ margin: 0, fontFamily: 'var(--font-display)', fontSize: '1.05rem', lineHeight: 1.3 }}>{p.title[lang]}</h3>
+                </div>
+              </a>
+            ))}
           </div>
         </div>
       </section>
