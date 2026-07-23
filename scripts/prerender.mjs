@@ -319,10 +319,10 @@ if (!template.includes('<div id="root"></div>')) {
 }
 const urls = [];
 for (const route of ROUTES) {
-  // Blog screens carry full per-language content, so they render once per
-  // language; every other screen renders in English and is dictionary-
-  // translated (chrome included) for the /es tree.
-  const isBlog = route === 'blog' || route.startsWith('blogpost:');
+  // Blog screens carry full per-language content (and home embeds the
+  // Journal teaser), so they render once per language; every other screen
+  // renders in English and is dictionary-translated for the /es tree.
+  const isBlog = route === 'blog' || route.startsWith('blogpost:') || route === 'home';
   globalThis.F39_LANG = 'en';
   const bodyEN = renderRoute(route);
   for (const lang of ['en', 'es']) {

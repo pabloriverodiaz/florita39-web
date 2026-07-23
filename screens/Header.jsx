@@ -9,6 +9,7 @@ function Header({ route, onNav, onImage = false }) {
     ['experiences', 'Experiences'],
     ['island', 'The Island'],
     ['restaurant', 'Dining'],
+    ['blog', 'Journal'],
   ];
   const go = (id) => { setOpen(false); onNav(id); };
   // When the mobile menu is open, drop the transparent/on-image treatment so

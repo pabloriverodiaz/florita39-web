@@ -115,5 +115,43 @@ function BlogPostScreen({ slug, onNav }) {
     </div>
   );
 }
+// Home-page teaser: the three newest guides, styled like the home's own
+// card sections, funneling visitors into the Journal.
+function JournalTeaser({ onNav }) {
+  const lang = useF39Lang();
+  const S = {
+    eyebrow: { en: 'Island Journal', es: 'Diario de la Isla' },
+    title: { en: 'Know the island like we do.', es: 'Conoce la isla como nosotros.' },
+    lede: {
+      en: 'Ferries, beaches, seasons and secrets — practical guides written from our door on the walking street.',
+      es: 'Ferries, playas, temporadas y secretos — guías prácticas escritas desde nuestra puerta en la calle peatonal.',
+    },
+    cta: { en: 'Read all the guides', es: 'Lee todas las guías' },
+  };
+  const posts = [...window.F39BLOG].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3);
+  return (
+    <section className="block alt" id="journal">
+      <div className="wrap">
+        <div className="eyebrow">{S.eyebrow[lang]}</div>
+        <h2 className="sec">{S.title[lang]}</h2>
+        <p className="sec-lede">{S.lede[lang]}</p>
+        <div className="amen" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))' }}>
+          {posts.map((p) => (
+            <a key={p.slug} className="a" href={window.F39path('blogpost:' + p.slug)}
+               onClick={(e) => { e.preventDefault(); onNav('blogpost:' + p.slug); }}
+               style={{ cursor: 'pointer', textDecoration: 'none', color: 'inherit' }}>
+              <div className="ph"><img loading="lazy" decoding="async" src={F39_ASSETS + '/' + p.image} alt={p.title[lang]} /></div>
+              <div className="bd"><h4>{p.title[lang]}</h4><p>{p.excerpt[lang]}</p></div>
+            </a>
+          ))}
+        </div>
+        <div className="btns" style={{ marginTop: 30, justifyContent: 'center' }}>
+          <button className="btn btn-sand" onClick={() => onNav('blog')}>{S.cta[lang]}</button>
+        </div>
+      </div>
+    </section>
+  );
+}
 window.BlogScreen = BlogScreen;
 window.BlogPostScreen = BlogPostScreen;
+window.JournalTeaser = JournalTeaser;
