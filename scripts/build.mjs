@@ -9,7 +9,7 @@ import { readFileSync, writeFileSync } from 'fs';
 const SCREENS = [
   'Header', 'Footer', 'HomeScreen', 'RoomsScreen', 'RoomDetailScreen',
   'AmenitiesScreen', 'ExperiencesScreen', 'ZamaScreen', 'IslandScreen',
-  'RestaurantScreen', 'GalleryScreen', 'InfoScreens', 'ReserveScreen', 'App',
+  'RestaurantScreen', 'GalleryScreen', 'InfoScreens', 'ReserveScreen', 'Blog', 'App',
 ];
 
 const parts = SCREENS.map((name) => {
