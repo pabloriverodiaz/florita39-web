@@ -87,9 +87,24 @@
 <script type="text/babel" src="screens/InfoScreens.jsx?v=12"></script>
 <script type="text/babel" src="screens/ReserveScreen.jsx?v=12"></script>
 <script type="text/babel" data-presets="react">
+// Routes live in the URL hash (#/rooms, #/room:suite) so the browser's
+// back/forward buttons work and screens are deep-linkable.
+const readRoute = () => decodeURIComponent(window.location.hash.replace(/^#\/?/, '')) || 'home';
 function App() {
-  const [route, setRoute] = React.useState('home');
-  const onNav = (r) => { setRoute(r); window.scrollTo({ top: 0, behavior: 'auto' }); };
+  const [route, setRoute] = React.useState(readRoute);
+  React.useEffect(() => {
+    const onHash = () => {
+      setRoute(readRoute());
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      if (window.gtag) window.gtag('event', 'page_view', { page_location: window.location.href });
+    };
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
+  const onNav = (r) => {
+    if (r === readRoute()) { window.scrollTo({ top: 0, behavior: 'auto' }); return; }
+    window.location.hash = '/' + r;
+  };
   const base = route.split(':')[0];
   const onImage = base === 'home';
 
