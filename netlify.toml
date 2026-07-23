@@ -1,5 +1,8 @@
 # Netlify — Florita 39
-# Static site: plain HTML/CSS/JS, no build step (JSX is transformed in-browser).
-# The repo root IS the site, so publish from root.
+# Static site published from the repo root. The only build step compiles the
+# JSX screens into lib/screens.js (scripts/build.mjs) so browsers get plain
+# JS instead of downloading Babel and compiling on every visit.
+# node_modules is removed after the build so it isn't uploaded with the site.
 [build]
   publish = "."
+  command = "npm run build && rm -rf node_modules"

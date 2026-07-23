@@ -3,3 +3,7 @@
 
 # Local backup of pre-crop square logos (not needed on the site)
 assets/logos/_original_square/
+
+# Build
+node_modules/
+lib/screens.js
