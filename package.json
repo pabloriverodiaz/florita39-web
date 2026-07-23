@@ -1,0 +1,11 @@
+{
+  "name": "florita39-web",
+  "private": true,
+  "description": "Florita 39 — boutique hotel website (static site, JSX compiled at build time)",
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}
