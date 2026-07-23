@@ -1,6 +1,8 @@
 // Prerenders every screen to static HTML — EN at /<route>/index.html and
 // ES at /es/<route>/index.html — so search engines index real content on
 // real URLs without executing JavaScript. React takes over on load.
+// Emits per-page titles/descriptions (keyword-researched), Open Graph images,
+// and JSON-LD (HotelRoom+Offer, FAQPage, Restaurant, BreadcrumbList).
 // Runs after scripts/build.mjs (needs lib/screens.js). Also writes sitemap.xml.
 import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { dirname, join } from 'path';
@@ -44,62 +46,66 @@ load('lib/screens.js');
 const D = globalThis.F39DATA;
 const DICT = globalThis.F39_DICT;
 const t = (s) => (DICT && DICT[s]) || s; // EN → ES via the runtime dictionary
+const abs = (p) => `${SITE}/assets/${p}`;
 
 // ---- routes & per-page metadata --------------------------------------------
+// Titles/descriptions target researched queries: "boutique hotel isla mujeres",
+// "where to stay isla mujeres", "hotels near playa norte", "isla mujeres centro",
+// "hotel familiar / con alberca", "dónde hospedarse en isla mujeres".
 const META = {
   home: {
-    en: ['Florita 39 — Hotel Boutique · Isla Mujeres',
-      'Florita 39 — an intimate six-suite boutique hotel in the heart of Isla Mujeres. Rooftop pool, Zama Beach Club included, steps from Playa Norte and the Ultramar ferry.'],
-    es: ['Florita 39 — Hotel Boutique · Isla Mujeres',
-      'Florita 39 — un íntimo hotel boutique de seis suites en el corazón de Isla Mujeres. Alberca en la azotea, Zama Beach Club incluido, a pasos de Playa Norte y del ferry Ultramar.'],
+    en: ['Florita 39 — Boutique Hotel in Isla Mujeres · Playa Norte',
+      'Intimate six-suite boutique hotel in Isla Mujeres centro, steps from Playa Norte and the Ultramar ferry. Rooftop pool, family suites with kitchenettes, Zama Beach Club included.'],
+    es: ['Florita 39 — Hotel Boutique en Isla Mujeres · Playa Norte',
+      'Íntimo hotel boutique de seis suites en el centro de Isla Mujeres, a pasos de Playa Norte y del ferry Ultramar. Alberca en la azotea, suites familiares con cocineta y Zama Beach Club incluido.'],
   },
   rooms: {
-    en: ['Rooms & Suites — Florita 39 · Isla Mujeres',
-      'Six suites with private entrances in the heart of Isla Mujeres — lofts, family suites and two-level duplexes with kitchenettes, balconies and garden patios.'],
-    es: ['Habitaciones y Suites — Florita 39 · Isla Mujeres',
-      'Seis suites con entrada privada en el corazón de Isla Mujeres — lofts, suites familiares y dúplex de dos niveles con cocineta, balcón y jardín.'],
+    en: ['Rooms & Suites in Isla Mujeres Centro — Florita 39',
+      'Six suites with private entrances near Playa Norte — lofts for couples, family suites and two-level duplexes with kitchenettes, balconies and garden patios.'],
+    es: ['Habitaciones y Suites en el Centro de Isla Mujeres — Florita 39',
+      'Seis suites con entrada privada cerca de Playa Norte — lofts para parejas, suites familiares y dúplex de dos niveles con cocineta, balcón y jardín.'],
   },
   amenities: {
-    en: ['Amenities — Florita 39 · Isla Mujeres',
-      "Rooftop pool and club, spa, tropical garden, Rubén's Restaurant and an all-day coffee shop — everything included in your stay at Florita 39."],
-    es: ['Amenidades — Florita 39 · Isla Mujeres',
-      "Alberca y club en la azotea, spa, jardín tropical, Rubén's Restaurant y café todo el día — todo incluido en tu estancia en Florita 39."],
+    en: ['Amenities — Rooftop Pool, Spa & More · Florita 39 Isla Mujeres',
+      "Rooftop pool and sunset club, spa, tropical garden, Rubén's Restaurant and an all-day coffee shop — everything included in your stay at Florita 39, Isla Mujeres."],
+    es: ['Amenidades — Alberca en la Azotea, Spa y Más · Florita 39',
+      "Alberca en la azotea con club al atardecer, spa, jardín tropical, Rubén's Restaurant y café todo el día — todo incluido en tu estancia en Florita 39, Isla Mujeres."],
   },
   experiences: {
-    en: ['Experiences & Tours — Florita 39 · Isla Mujeres',
-      'Fishing trips, snorkel and reef tours, golf-cart rental and Zama Beach Club days — all arranged from the hotel.'],
-    es: ['Experiencias y Tours — Florita 39 · Isla Mujeres',
-      'Tours de pesca, snorkel y arrecife, renta de carritos de golf y días en Zama Beach Club — todo organizado desde el hotel.'],
+    en: ['Experiences & Tours in Isla Mujeres — Florita 39',
+      'Fishing trips, snorkel and reef tours, golf-cart rental and Zama Beach Club days in Isla Mujeres — all arranged from the hotel.'],
+    es: ['Experiencias y Tours en Isla Mujeres — Florita 39',
+      'Tours de pesca, snorkel y arrecife, renta de carritos de golf y días en Zama Beach Club en Isla Mujeres — todo organizado desde el hotel.'],
   },
   zama: {
-    en: ['Zama Beach Club — Florita 39 · Isla Mujeres',
-      'Zama Beach Club is included with every stay at Florita 39 — beachfront pool, loungers and full service with no minimum spend.'],
-    es: ['Zama Beach Club — Florita 39 · Isla Mujeres',
-      'Zama Beach Club está incluido en cada estancia en Florita 39 — alberca frente al mar, camastros y servicio completo sin consumo mínimo.'],
+    en: ['Zama Beach Club Included — Florita 39 · Isla Mujeres',
+      'Zama Beach Club is included with every stay at Florita 39, Isla Mujeres — beachfront pool, loungers and full service with no minimum spend.'],
+    es: ['Zama Beach Club Incluido — Florita 39 · Isla Mujeres',
+      'Zama Beach Club está incluido en cada estancia en Florita 39, Isla Mujeres — alberca frente al mar, camastros y servicio completo sin consumo mínimo.'],
   },
   island: {
-    en: ['Isla Mujeres Guide — Florita 39',
-      'Playa Norte, Punta Sur, the walking street and the Ultramar ferry — Isla Mujeres from the centre, steps from Florita 39.'],
-    es: ['Guía de Isla Mujeres — Florita 39',
-      'Playa Norte, Punta Sur, la calle peatonal y el ferry Ultramar — Isla Mujeres desde el centro, a pasos de Florita 39.'],
+    en: ['Isla Mujeres Travel Guide — Playa Norte, Punta Sur & More',
+      'Playa Norte, Punta Sur, the walking street and the Ultramar ferry from Cancún — Isla Mujeres from the centre, steps from Florita 39.'],
+    es: ['Guía de Isla Mujeres — Playa Norte, Punta Sur y Más',
+      'Playa Norte, Punta Sur, la calle peatonal y el ferry Ultramar desde Cancún — Isla Mujeres desde el centro, a pasos de Florita 39.'],
   },
   restaurant: {
-    en: ["Rubén's Restaurant — Florita 39 · Isla Mujeres",
-      'Fresh regional Yucatán cooking and an all-day coffee shop in the heart of Florita 39 — open to guests and the island alike.'],
-    es: ["Rubén's Restaurant — Florita 39 · Isla Mujeres",
-      'Cocina regional yucateca y café todo el día en el corazón de Florita 39 — abierto a huéspedes y a toda la isla.'],
+    en: ["Rubén's Restaurant — Yucatán Cooking in Isla Mujeres Centro",
+      "Fresh regional Yucatán cooking and an all-day coffee shop in the heart of Florita 39, on the Isla Mujeres walking street — open to guests and the island alike."],
+    es: ["Rubén's Restaurant — Cocina Yucateca en el Centro de Isla Mujeres",
+      'Cocina regional yucateca y café todo el día en el corazón de Florita 39, en la calle peatonal de Isla Mujeres — abierto a huéspedes y a toda la isla.'],
   },
   gallery: {
-    en: ['Gallery — Florita 39 · Isla Mujeres',
-      'The suites, the rooftop, the dining and the island around Florita 39 — in pictures.'],
-    es: ['Galería — Florita 39 · Isla Mujeres',
-      'Las suites, la azotea, el restaurante y la isla alrededor de Florita 39 — en imágenes.'],
+    en: ['Gallery — Florita 39 Boutique Hotel · Isla Mujeres',
+      'The suites, the rooftop pool, the dining and the island around Florita 39, Isla Mujeres — in pictures.'],
+    es: ['Galería — Florita 39 Hotel Boutique · Isla Mujeres',
+      'Las suites, la alberca en la azotea, el restaurante y la isla alrededor de Florita 39, Isla Mujeres — en imágenes.'],
   },
   offers: {
-    en: ['Offers — Florita 39 · Isla Mujeres',
-      'Direct-booking offers at Florita 39 — the lowest rates, summer discounts and Zama Beach Club always included.'],
-    es: ['Ofertas — Florita 39 · Isla Mujeres',
-      'Ofertas por reserva directa en Florita 39 — las mejores tarifas, descuentos de verano y Zama Beach Club siempre incluido.'],
+    en: ['Hotel Offers & Direct Booking Deals — Florita 39 Isla Mujeres',
+      'Direct-booking offers at Florita 39, Isla Mujeres — the lowest rates, summer discounts and Zama Beach Club always included.'],
+    es: ['Ofertas y Reserva Directa — Florita 39 Isla Mujeres',
+      'Ofertas por reserva directa en Florita 39, Isla Mujeres — las mejores tarifas, descuentos de verano y Zama Beach Club siempre incluido.'],
   },
   about: {
     en: ['Our Story — Florita 39 · Isla Mujeres',
@@ -114,25 +120,43 @@ const META = {
       'Contacta a Florita 39 por WhatsApp, teléfono o correo — con gusto te ayudamos a planear tu estancia, un tour o una mesa.'],
   },
   faq: {
-    en: ['FAQ — Florita 39 · Isla Mujeres',
+    en: ['FAQ — Staying at Florita 39 · Isla Mujeres',
       'Ferry from Cancún, check-in times, kitchens, Zama Beach Club access and more — practical answers for your stay at Florita 39.'],
     es: ['Preguntas Frecuentes — Florita 39 · Isla Mujeres',
       'Ferry desde Cancún, horarios de check-in, cocinas, acceso a Zama Beach Club y más — respuestas prácticas para tu estancia.'],
   },
   reserve: {
-    en: ['Reserve — Florita 39 · Isla Mujeres',
-      'Book direct at Florita 39 for the lowest rates — choose your suite and dates on our secure booking engine.'],
-    es: ['Reserva — Florita 39 · Isla Mujeres',
-      'Reserva directo en Florita 39 con las mejores tarifas — elige tu suite y fechas en nuestro motor de reservas seguro.'],
+    en: ['Book Direct — Florita 39 Boutique Hotel · Isla Mujeres',
+      'Book direct at Florita 39, Isla Mujeres for the lowest rates — choose your suite and dates on our secure booking engine.'],
+    es: ['Reserva Directo — Florita 39 Hotel Boutique · Isla Mujeres',
+      'Reserva directo en Florita 39, Isla Mujeres con las mejores tarifas — elige tu suite y fechas en nuestro motor de reservas seguro.'],
   },
 };
 for (const room of D.rooms) {
   META['room:' + room.id] = {
-    en: [`${room.name} — Florita 39 · Isla Mujeres`, room.blurb],
-    es: [`${room.name} — Florita 39 · Isla Mujeres`, t(room.blurb)],
+    en: [`${room.name} — Suite in Isla Mujeres · Florita 39`, room.blurb],
+    es: [`${room.name} — Suite en Isla Mujeres · Florita 39`, t(room.blurb)],
   };
 }
 const ROUTES = Object.keys(META);
+
+// Per-page social/hero image (falls back to the generic og-cover).
+const OG_DEFAULT = 'marketing/og-cover.jpg';
+const OGIMG = {
+  home: 'marketing/playa/sea.jpg',
+  rooms: 'rooms/florita-1/pro-01.jpg',
+  amenities: 'areas/terraza/05.jpg',
+  experiences: 'marketing/lifestyle/zycar.jpg',
+  zama: 'marketing/zama/dji3.jpg',
+  island: 'marketing/playa/sea.jpg',
+  restaurant: 'marketing/restaurante/00.jpg',
+  gallery: 'areas/terraza/01.jpg',
+  offers: 'rooms/florita-4/06.jpg',
+  about: 'areas/fachada/16.jpg',
+  contact: 'marketing/exterior/j3851.jpg',
+  faq: 'marketing/playa/m5705.jpg',
+};
+for (const room of D.rooms) OGIMG['room:' + room.id] = room.image;
 
 const SCREEN_FOR = {
   home: 'HomeScreen', rooms: 'RoomsScreen', amenities: 'AmenitiesScreen',
@@ -147,6 +171,63 @@ const pathFor = (route, lang) => {
   if (route.startsWith('room:')) return `${prefix}/room/${route.split(':')[1]}/`;
   return `${prefix}/${route}/`;
 };
+
+// ---- per-page JSON-LD -------------------------------------------------------
+const HOTEL_REF = { '@type': 'Hotel', '@id': `${SITE}/#hotel`, name: 'Florita 39', url: `${SITE}/` };
+const ADDRESS = {
+  '@type': 'PostalAddress', streetAddress: 'Miguel Hidalgo 103, Centro',
+  addressLocality: 'Isla Mujeres', addressRegion: 'Quintana Roo',
+  postalCode: '77400', addressCountry: 'MX',
+};
+function jsonLdFor(route, lang, url) {
+  const T = lang === 'es' ? t : (s) => s;
+  const blocks = [];
+  const crumbs = [{ name: lang === 'es' ? 'Inicio' : 'Home', item: SITE + pathFor('home', lang) }];
+  if (route.startsWith('room:')) {
+    const room = D.rooms.find((r) => 'room:' + r.id === route);
+    crumbs.push({ name: lang === 'es' ? 'Habitaciones' : 'Rooms', item: SITE + pathFor('rooms', lang) });
+    crumbs.push({ name: room.name, item: url });
+    blocks.push({
+      '@context': 'https://schema.org', '@type': 'HotelRoom', '@id': url, url,
+      name: room.name, description: T(room.blurb), image: abs(room.image),
+      bed: { '@type': 'BedDetails', typeOfBed: room.bed },
+      occupancy: { '@type': 'QuantitativeValue', maxValue: /4/.test(room.guests) ? 4 : 2, unitText: lang === 'es' ? 'huéspedes' : 'guests' },
+      amenityFeature: room.tags.map((tag) => ({ '@type': 'LocationFeatureSpecification', name: T(tag), value: true })),
+      containedInPlace: HOTEL_REF,
+      offers: {
+        '@type': 'Offer', price: room.price.replace(/[^0-9]/g, ''), priceCurrency: room.currency,
+        availability: 'https://schema.org/InStock', url: D.brand.booking[lang],
+      },
+    });
+  } else {
+    crumbs.push({ name: META[route][lang][0].split('—')[0].trim(), item: url });
+    if (route === 'faq') {
+      blocks.push({
+        '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: lang,
+        mainEntity: D.faq.map((f) => ({
+          '@type': 'Question', name: T(f.q),
+          acceptedAnswer: { '@type': 'Answer', text: T(f.a) },
+        })),
+      });
+    }
+    if (route === 'restaurant') {
+      blocks.push({
+        '@context': 'https://schema.org', '@type': 'Restaurant',
+        name: "Rubén's Restaurant", description: T(D.restaurant.blurb),
+        image: abs(D.restaurant.image), url, servesCuisine: ['Yucatecan', 'Mexican'],
+        telephone: '+52 999 101 2428', address: ADDRESS, containedInPlace: HOTEL_REF,
+      });
+    }
+  }
+  blocks.push({
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: c.item })),
+  });
+  return blocks.map((b) => `<script type="application/ld+json">\n${JSON.stringify(b, null, 1)}\n</script>`).join('\n');
+}
+// The home pages keep the template's Hotel entity, enriched with its rooms.
+const containsPlace = (lang) => JSON.stringify(
+  D.rooms.map((r) => ({ '@type': 'HotelRoom', name: r.name, url: SITE + pathFor('room:' + r.id, lang) })), null, 1);
 
 // ---- render one route -------------------------------------------------------
 function renderRoute(route) {
@@ -210,6 +291,10 @@ for (const route of ROUTES) {
     const altEN = SITE + pathFor(route, 'en');
     const altES = SITE + pathFor(route, 'es');
     const body = lang === 'es' ? translateHTML(bodyEN) : bodyEN;
+    // Home keeps the dedicated 1200×630 share card; other pages use their hero.
+    const ogFile = route === 'home' ? OG_DEFAULT : (OGIMG[route] || OG_DEFAULT);
+    const ogImg = SITE + '/assets/' + ogFile;
+    const hero = OGIMG[route];
     let page = template
       .replace('<html lang="en">', `<html lang="${lang}">`)
       .replace(/<title>[^<]*<\/title>/, `<title>${esc(title)}</title>`)
@@ -221,9 +306,28 @@ for (const route of ROUTES) {
       .replace(/(<meta property="og:title" content=")[^"]*(">)/, `$1${esc(title)}$2`)
       .replace(/(<meta property="og:description" content=")[^"]*(">)/, `$1${esc(desc)}$2`)
       .replace(/(<meta property="og:url" content=")[^"]*(">)/, `$1${url}$2`)
+      .replace(/(<meta property="og:image" content=")[^"]*(">)/, `$1${ogImg}$2`)
       .replace(/(<meta name="twitter:title" content=")[^"]*(">)/, `$1${esc(title)}$2`)
       .replace(/(<meta name="twitter:description" content=")[^"]*(">)/, `$1${esc(desc)}$2`)
+      .replace(/(<meta name="twitter:image" content=")[^"]*(">)/, `$1${ogImg}$2`)
       .replace('<div id="root"></div>', `<div id="root">${body}</div>`);
+    if (ogFile !== OG_DEFAULT) {
+      // Dimensions of the generic cover don't apply to page-specific images.
+      page = page
+        .replace('<meta property="og:image:width" content="1200">\n', '')
+        .replace('<meta property="og:image:height" content="630">\n', '');
+    }
+    if (hero) {
+      // Hint the hero image to the preload scanner for a faster LCP.
+      page = page.replace('<link rel="canonical"',
+        `<link rel="preload" as="image" href="/assets/${hero}">\n<link rel="canonical"`);
+    }
+    if (route === 'home') {
+      page = page.replace('"numberOfRooms": 6,', `"numberOfRooms": 6,\n  "containsPlace": ${containsPlace(lang)},`);
+    } else {
+      page = page.replace(/<!-- Structured data: Hotel entity for Google rich results -->\n<script type="application\/ld\+json">[\s\S]*?<\/script>/,
+        jsonLdFor(route, lang, url));
+    }
     if (lang === 'es') {
       page = page
         .replace('<meta property="og:locale" content="en_US">', '<meta property="og:locale" content="es_MX">')
