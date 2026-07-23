@@ -3,11 +3,268 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://hotelflorita39.com/</loc>
-    <lastmod>2026-07-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/?lang=es"/>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/es/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/rooms/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/rooms/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/rooms/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/rooms/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/es/rooms/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/rooms/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/rooms/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/rooms/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/amenities/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/amenities/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/amenities/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/amenities/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/es/amenities/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/amenities/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/amenities/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/amenities/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/experiences/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/experiences/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/experiences/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/experiences/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/es/experiences/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/experiences/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/experiences/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/experiences/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/zama/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/zama/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/zama/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/zama/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/es/zama/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/zama/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/zama/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/zama/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/island/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/island/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/island/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/island/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/es/island/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/island/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/island/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/island/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/restaurant/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/restaurant/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/restaurant/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/restaurant/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/es/restaurant/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/restaurant/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/restaurant/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/restaurant/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/gallery/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/gallery/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/gallery/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/gallery/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/es/gallery/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/gallery/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/gallery/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/gallery/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/offers/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/offers/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/offers/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/offers/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/es/offers/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/offers/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/offers/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/offers/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/about/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/about/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/about/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/es/about/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/about/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/about/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/contact/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/contact/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/contact/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/contact/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/es/contact/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/contact/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/contact/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/contact/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/faq/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/faq/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/faq/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/faq/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/es/faq/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/faq/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/faq/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/faq/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/reserve/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/reserve/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/reserve/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/reserve/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/es/reserve/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/reserve/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/reserve/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/reserve/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/room/loft-florita/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/room/loft-florita/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/room/loft-florita/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/room/loft-florita/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/es/room/loft-florita/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/room/loft-florita/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/room/loft-florita/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/room/loft-florita/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/room/hidalgo-heritage/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/room/hidalgo-heritage/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/room/hidalgo-heritage/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/room/hidalgo-heritage/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/es/room/hidalgo-heritage/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/room/hidalgo-heritage/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/room/hidalgo-heritage/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/room/hidalgo-heritage/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/room/playa-norte/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/room/playa-norte/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/room/playa-norte/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/room/playa-norte/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/es/room/playa-norte/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/room/playa-norte/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/room/playa-norte/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/room/playa-norte/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/room/rubber-tree/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/room/rubber-tree/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/room/rubber-tree/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/room/rubber-tree/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/es/room/rubber-tree/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/room/rubber-tree/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/room/rubber-tree/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/room/rubber-tree/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/room/isla-mujeres-duplex/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/room/isla-mujeres-duplex/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/room/isla-mujeres-duplex/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/room/isla-mujeres-duplex/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/es/room/isla-mujeres-duplex/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/room/isla-mujeres-duplex/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/room/isla-mujeres-duplex/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/room/isla-mujeres-duplex/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/room/boutique-garden/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/room/boutique-garden/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/room/boutique-garden/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/room/boutique-garden/"/>
+  </url>
+  <url>
+    <loc>https://hotelflorita39.com/es/room/boutique-garden/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelflorita39.com/room/boutique-garden/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://hotelflorita39.com/es/room/boutique-garden/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelflorita39.com/room/boutique-garden/"/>
   </url>
 </urlset>

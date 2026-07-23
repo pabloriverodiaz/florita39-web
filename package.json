@@ -1,11 +1,14 @@
 {
   "name": "florita39-web",
   "private": true,
-  "description": "Florita 39 — boutique hotel website (static site, JSX compiled at build time)",
+  "description": "Florita 39 — boutique hotel website (static site, JSX compiled and prerendered at build time)",
   "scripts": {
-    "build": "node scripts/build.mjs"
+    "build": "node scripts/build.mjs && node scripts/prerender.mjs"
   },
   "devDependencies": {
-    "esbuild": "^0.25.0"
+    "esbuild": "^0.25.0",
+    "node-html-parser": "^9.0.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   }
 }
