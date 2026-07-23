@@ -376,7 +376,8 @@ for (const route of ROUTES) {
     if (lang === 'es') {
       page = page
         .replace('<meta property="og:locale" content="en_US">', '<meta property="og:locale" content="es_MX">')
-        .replace('<meta property="og:locale:alternate" content="es_MX">', '<meta property="og:locale:alternate" content="en_US">');
+        .replace('<meta property="og:locale:alternate" content="es_MX">', '<meta property="og:locale:alternate" content="en_US">')
+        .replace('href="/feed.xml"', 'href="/es/feed.xml"');
     }
     const outFile = path === '/' ? 'index.html' : path.slice(1) + 'index.html';
     mkdirSync(join(ROOT, dirname(outFile)), { recursive: true });
@@ -400,5 +401,33 @@ ${urls.map(({ url, altEN, altES }) => `  <url>
 </urlset>
 `;
 writeFileSync(join(ROOT, 'sitemap.xml'), sitemap);
-console.log(`prerendered ${urls.length} pages (${ROUTES.length} routes × en/es) + sitemap.xml`);
+
+// ---- RSS feeds (one per language) -------------------------------------------
+const rfc822 = (iso) => new Date(iso + 'T12:00:00Z').toUTCString();
+for (const lang of ['en', 'es']) {
+  const feedTitle = lang === 'es' ? 'Florita 39 — Diario de la Isla' : 'Florita 39 — Island Journal';
+  const items = [...BLOG].sort((a, b) => b.date.localeCompare(a.date)).map((p) => {
+    const link = SITE + pathFor('blogpost:' + p.slug, lang);
+    return `    <item>
+      <title>${esc(p.title[lang])}</title>
+      <link>${link}</link>
+      <guid isPermaLink="true">${link}</guid>
+      <pubDate>${rfc822(p.date)}</pubDate>
+      <description>${esc(p.excerpt[lang])}</description>
+    </item>`;
+  }).join('\n');
+  const feed = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>${esc(feedTitle)}</title>
+    <link>${SITE + pathFor('blog', lang)}</link>
+    <description>${esc(META.blog[lang][1])}</description>
+    <language>${lang === 'es' ? 'es-mx' : 'en-us'}</language>
+${items}
+  </channel>
+</rss>
+`;
+  writeFileSync(join(ROOT, lang === 'es' ? 'es/feed.xml' : 'feed.xml'), feed);
+}
+console.log(`prerendered ${urls.length} pages (${ROUTES.length} routes × en/es) + sitemap.xml + RSS feeds`);
 process.exit(0); // the site's i18n boot keeps a setTimeout retry loop alive in Node
