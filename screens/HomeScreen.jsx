@@ -266,6 +266,9 @@ function HomeScreen({ onNav }) {
         </div>
       </section>
 
+      {/* ===== ISLAND JOURNAL ===== */}
+      <window.JournalTeaser onNav={onNav} />
+
       {lightbox && (
         <div className="mega-lb" onClick={() => setLightbox(null)}>
           <img src={lightbox} alt="" />
