@@ -88,21 +88,34 @@
 <script type="text/babel" src="screens/ReserveScreen.jsx?v=12"></script>
 <script type="text/babel" data-presets="react">
 // Routes live in the URL hash (#/rooms, #/room:suite) so the browser's
-// back/forward buttons work and screens are deep-linkable.
+// back/forward buttons work and screens are deep-linkable. Scroll is managed
+// by hand: links open the new screen at the top, while back/forward return
+// to the scroll position the visitor left that screen at.
 const readRoute = () => decodeURIComponent(window.location.hash.replace(/^#\/?/, '')) || 'home';
+if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
 function App() {
   const [route, setRoute] = React.useState(readRoute);
+  const scrollMem = React.useRef({});
+  const fromLink = React.useRef(false);
+  const targetY = React.useRef(0);
   React.useEffect(() => {
     const onHash = () => {
-      setRoute(readRoute());
-      window.scrollTo({ top: 0, behavior: 'auto' });
+      const r = readRoute();
+      targetY.current = fromLink.current ? 0 : (scrollMem.current[r] || 0);
+      fromLink.current = false;
+      setRoute(r);
       if (window.gtag) window.gtag('event', 'page_view', { page_location: window.location.href });
     };
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
+  React.useLayoutEffect(() => {
+    window.scrollTo({ top: targetY.current, behavior: 'instant' });
+  }, [route]);
   const onNav = (r) => {
-    if (r === readRoute()) { window.scrollTo({ top: 0, behavior: 'auto' }); return; }
+    if (r === readRoute()) { window.scrollTo({ top: 0, behavior: 'instant' }); return; }
+    scrollMem.current[readRoute()] = window.scrollY;
+    fromLink.current = true;
     window.location.hash = '/' + r;
   };
   const base = route.split(':')[0];
