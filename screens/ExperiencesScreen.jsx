@@ -31,7 +31,7 @@ function ExperiencesScreen({ onNav }) {
             {D.experiences.map((e) => (
               <div key={e.id} className="f39-card" style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ position: 'relative', height: 240 }}>
-                  <img src={F39_ASSETS + '/' + e.image} alt={e.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img loading="lazy" decoding="async" src={F39_ASSETS + '/' + e.image} alt={e.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   {e.link && <span style={{ position: 'absolute', top: 14, left: 14 }}><Badge variant="sand">Included for guests</Badge></span>}
                 </div>
                 <div style={{ padding: 26, display: 'flex', flexDirection: 'column', flex: 1 }}>

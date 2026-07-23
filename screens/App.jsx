@@ -8,12 +8,14 @@ const parsePath = () => {
   if (p === '/es' || p.indexOf('/es/') === 0) p = p.slice(3);
   const segs = p.split('/').filter(Boolean);
   if (segs[0] === 'room' && segs[1]) return 'room:' + decodeURIComponent(segs[1]);
+  if (segs[0] === 'blog' && segs[1]) return 'blogpost:' + decodeURIComponent(segs[1]);
   return segs[0] || 'home';
 };
 window.F39path = (r) => {
   const prefix = (window.F39_LANG === 'es') ? '/es' : '';
   if (r === 'home') return prefix + '/';
   if (r.indexOf('room:') === 0) return prefix + '/room/' + r.split(':')[1] + '/';
+  if (r.indexOf('blogpost:') === 0) return prefix + '/blog/' + r.split(':')[1] + '/';
   return prefix + '/' + r + '/';
 };
 if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
@@ -65,6 +67,8 @@ function App() {
   else if (base === 'contact') screen = <window.ContactScreen onNav={onNav} />;
   else if (base === 'faq') screen = <window.FaqScreen onNav={onNav} />;
   else if (base === 'reserve') screen = <window.ReserveScreen onNav={onNav} />;
+  else if (base === 'blog') screen = <window.BlogScreen onNav={onNav} />;
+  else if (base === 'blogpost') screen = <window.BlogPostScreen slug={route.split(':')[1]} onNav={onNav} />;
 
   return (
     <div className="f39-site">

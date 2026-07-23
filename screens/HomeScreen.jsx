@@ -55,7 +55,7 @@ function HomeScreen({ onNav }) {
     <div className="mega">
       {/* ===== HERO ===== */}
       <header className="hero" id="top">
-        <img className="bg" src={img('marketing/playa/sea.jpg')} alt="Playa Norte, Isla Mujeres" />
+        <img className="bg" fetchpriority="high" src={img('marketing/playa/sea.jpg')} alt="Playa Norte, Isla Mujeres" />
         <div className="veil"></div>
         <div className="wrap">
           <div className="kick">Boutique Hotel · Isla Mujeres, Mexico</div>
@@ -103,7 +103,7 @@ function HomeScreen({ onNav }) {
           <div className="suites">
             {suites.map((s) => (
               <article key={s.no} className="suite linkcard" onClick={() => onNav('room:' + s.id)}>
-                <div className="ph"><span className="no">{s.no}</span><img src={img(s.image)} alt={s.title} /></div>
+                <div className="ph"><span className="no">{s.no}</span><img loading="lazy" decoding="async" src={img(s.image)} alt={s.title} /></div>
                 <div className="bd">
                   <h3>{s.title}</h3>
                   <div className="who">{s.who}</div>
@@ -131,7 +131,7 @@ function HomeScreen({ onNav }) {
           <h2 className="sec">Book direct and save.</h2>
           <p className="sec-lede">The best rates are always here, direct with us — no intermediary fees.</p>
           <div className="promo">
-            <img src={img('rooms/florita-2/08.jpg')} alt="Family suite" />
+            <img loading="lazy" decoding="async" src={img('rooms/florita-2/08.jpg')} alt="Family suite" />
             <div className="v"></div>
             <div className="in">
               <div className="badge"><b>30%</b><span>Off</span></div>
@@ -155,7 +155,7 @@ function HomeScreen({ onNav }) {
           <div className="strip">
             {islandStrip.map((t) => (
               <div key={t.src} className="t" onClick={() => setLightbox(img(t.src))}>
-                <img src={img(t.src)} alt={t.cap} /><div className="cap">{t.cap}</div>
+                <img loading="lazy" decoding="async" src={img(t.src)} alt={t.cap} /><div className="cap">{t.cap}</div>
               </div>
             ))}
           </div>
@@ -169,7 +169,7 @@ function HomeScreen({ onNav }) {
           <h2 className="sec">Zama Beach Club, included.</h2>
           <p className="sec-lede">As a Florita 39 guest you enter Zama Beach Club <b>with no minimum spend</b> — enjoy the pool, the loungers and the sea, and order freely, no strings attached.</p>
           <div className="split rev">
-            <div className="ph"><img src={img('marketing/zama/dji3.jpg')} alt="Zama Beach Club" /></div>
+            <div className="ph"><img loading="lazy" decoding="async" src={img('marketing/zama/dji3.jpg')} alt="Zama Beach Club" /></div>
             <div className="tx">
               <span className="tag">Guests only</span>
               <h3>The day by the sea, sorted.</h3>
@@ -192,7 +192,7 @@ function HomeScreen({ onNav }) {
           <h2 className="sec" style={{ color: '#fff' }}>We rent golf carts.</h2>
           <p className="sec-lede">The best way to explore Isla Mujeres. We leave a cart ready at the hotel so you can roam at your own pace — from Playa Norte to Punta Sur, on nobody’s schedule.</p>
           <div className="split" style={{ borderColor: 'rgba(255,255,255,.14)', background: 'rgba(255,255,255,.04)' }}>
-            <div className="ph"><img src={img('marketing/lifestyle/zycar.jpg')} alt="Golf cart by the sea" /></div>
+            <div className="ph"><img loading="lazy" decoding="async" src={img('marketing/lifestyle/zycar.jpg')} alt="Golf cart by the sea" /></div>
             <div className="tx">
               <span className="tag" style={{ background: 'rgba(131,195,215,.18)', color: 'var(--blue-300)' }}>Easy rental</span>
               <h3 style={{ color: '#fff' }}>Your island, your pace.</h3>
@@ -215,7 +215,7 @@ function HomeScreen({ onNav }) {
           <h2 className="sec">Fishing tours.</h2>
           <p className="sec-lede">Head out into the Caribbean with local captains: sport fishing, snorkel and open-water afternoons. We coordinate your departure from the hotel — just bring the enthusiasm (and sunscreen).</p>
           <div className="split rev">
-            <div className="ph"><img src={img('marketing/playa/j3874.jpg')} alt="Fishing trip at sea" /></div>
+            <div className="ph"><img loading="lazy" decoding="async" src={img('marketing/playa/j3874.jpg')} alt="Fishing trip at sea" /></div>
             <div className="tx">
               <span className="tag">With a local captain</span>
               <h3>Out to sea at dawn.</h3>
@@ -240,7 +240,7 @@ function HomeScreen({ onNav }) {
           <div className="strip" style={{ gridTemplateColumns: 'repeat(4,1fr)' }}>
             {tinyStrip.map((t) => (
               <div key={t.src} className="t" style={{ aspectRatio: '4/5' }} onClick={() => setLightbox(img(t.src))}>
-                <img src={img(t.src)} alt={t.cap} /><div className="cap">{t.cap}</div>
+                <img loading="lazy" decoding="async" src={img(t.src)} alt={t.cap} /><div className="cap">{t.cap}</div>
               </div>
             ))}
           </div>
@@ -254,10 +254,10 @@ function HomeScreen({ onNav }) {
           <div className="eyebrow">In the hotel</div>
           <h2 className="sec">Everything you need.</h2>
           <div className="amen">
-            <div className="a" onClick={() => onNav('amenities')} style={{ cursor: 'pointer' }}><div className="ph"><img src={img('areas/terraza/05.jpg')} alt="Rooftop pool" /></div><div className="bd"><h4>Rooftop &amp; pool</h4><p>A rooftop club with a pool and loungers for the sunset.</p></div></div>
-            <div className="a" onClick={() => onNav('restaurant')} style={{ cursor: 'pointer' }}><div className="ph"><img src={img('marketing/restaurante/00.jpg')} alt="Restaurant" /></div><div className="bd"><h4>Rubén’s Restaurant</h4><p>Fresh cooking and a coffee shop in the heart of the hotel.</p></div></div>
-            <div className="a"><div className="ph"><img src={img('areas/fachada/16.jpg')} alt="Tropical garden" /></div><div className="bd"><h4>Tropical garden</h4><p>Sage stucco and green all around — the mark of the house.</p></div></div>
-            <div className="a" onClick={() => onNav('amenities')} style={{ cursor: 'pointer' }}><div className="ph"><img src={img('marketing/azotea/02.jpg')} alt="Spa & rest" /></div><div className="bd"><h4>Spa &amp; rest</h4><p>Moments of calm without leaving the hotel.</p></div></div>
+            <div className="a" onClick={() => onNav('amenities')} style={{ cursor: 'pointer' }}><div className="ph"><img loading="lazy" decoding="async" src={img('areas/terraza/05.jpg')} alt="Rooftop pool" /></div><div className="bd"><h4>Rooftop &amp; pool</h4><p>A rooftop club with a pool and loungers for the sunset.</p></div></div>
+            <div className="a" onClick={() => onNav('restaurant')} style={{ cursor: 'pointer' }}><div className="ph"><img loading="lazy" decoding="async" src={img('marketing/restaurante/00.jpg')} alt="Restaurant" /></div><div className="bd"><h4>Rubén’s Restaurant</h4><p>Fresh cooking and a coffee shop in the heart of the hotel.</p></div></div>
+            <div className="a"><div className="ph"><img loading="lazy" decoding="async" src={img('areas/fachada/16.jpg')} alt="Tropical garden" /></div><div className="bd"><h4>Tropical garden</h4><p>Sage stucco and green all around — the mark of the house.</p></div></div>
+            <div className="a" onClick={() => onNav('amenities')} style={{ cursor: 'pointer' }}><div className="ph"><img loading="lazy" decoding="async" src={img('marketing/azotea/02.jpg')} alt="Spa & rest" /></div><div className="bd"><h4>Spa &amp; rest</h4><p>Moments of calm without leaving the hotel.</p></div></div>
           </div>
           <div className="btns" style={{ marginTop: 30, justifyContent: 'center' }}>
             <button className="btn btn-pri" onClick={() => onNav('reserve')}>Check availability <span className="dot"></span></button>

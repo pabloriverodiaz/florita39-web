@@ -40,6 +40,7 @@ globalThis.scrollTo = noop;
 const load = (p) => (0, eval)(readFileSync(join(ROOT, p), 'utf8'));
 load('lib/_ds_bundle.js');
 load('lib/data.js');
+load('lib/blog.js');
 load('lib/i18n.js');
 load('lib/screens.js');
 
@@ -138,12 +139,26 @@ for (const room of D.rooms) {
     es: [`${room.name} — Suite en Isla Mujeres · Florita 39`, t(room.blurb)],
   };
 }
+const BLOG = globalThis.F39BLOG;
+META.blog = {
+  en: ['Isla Mujeres Travel Guides & Local Tips — Florita 39 Journal',
+    'Ferries from Cancún, Playa Norte, golf carts, whale-shark season and more — local guides from a boutique hotel on the Isla Mujeres walking street.'],
+  es: ['Guías y Tips Locales de Isla Mujeres — Diario Florita 39',
+    'Ferry desde Cancún, Playa Norte, carritos de golf, temporada de tiburón ballena y más — guías locales desde un hotel boutique en la calle peatonal de Isla Mujeres.'],
+};
+for (const post of BLOG) {
+  META['blogpost:' + post.slug] = {
+    en: [`${post.title.en} | Florita 39`, post.excerpt.en],
+    es: [`${post.title.es} | Florita 39`, post.excerpt.es],
+  };
+}
 const ROUTES = Object.keys(META);
 
 // Per-page social/hero image (falls back to the generic og-cover).
 const OG_DEFAULT = 'marketing/og-cover.jpg';
 const OGIMG = {
   home: 'marketing/playa/sea.jpg',
+  blog: 'marketing/observer/the-roof-10.jpg',
   rooms: 'rooms/florita-1/pro-01.jpg',
   amenities: 'areas/terraza/05.jpg',
   experiences: 'marketing/lifestyle/zycar.jpg',
@@ -157,18 +172,21 @@ const OGIMG = {
   faq: 'marketing/playa/m5705.jpg',
 };
 for (const room of D.rooms) OGIMG['room:' + room.id] = room.image;
+for (const post of BLOG) OGIMG['blogpost:' + post.slug] = post.image;
 
 const SCREEN_FOR = {
   home: 'HomeScreen', rooms: 'RoomsScreen', amenities: 'AmenitiesScreen',
   experiences: 'ExperiencesScreen', zama: 'ZamaScreen', island: 'IslandScreen',
   restaurant: 'RestaurantScreen', gallery: 'GalleryScreen', offers: 'OffersScreen',
   about: 'AboutScreen', contact: 'ContactScreen', faq: 'FaqScreen', reserve: 'ReserveScreen',
+  blog: 'BlogScreen',
 };
 
 const pathFor = (route, lang) => {
   const prefix = lang === 'es' ? '/es' : '';
   if (route === 'home') return prefix + '/';
   if (route.startsWith('room:')) return `${prefix}/room/${route.split(':')[1]}/`;
+  if (route.startsWith('blogpost:')) return `${prefix}/blog/${route.split(':')[1]}/`;
   return `${prefix}/${route}/`;
 };
 
@@ -198,6 +216,23 @@ function jsonLdFor(route, lang, url) {
         '@type': 'Offer', price: room.price.replace(/[^0-9]/g, ''), priceCurrency: room.currency,
         availability: 'https://schema.org/InStock', url: D.brand.booking[lang],
       },
+    });
+  } else if (route.startsWith('blogpost:')) {
+    const post = BLOG.find((p) => 'blogpost:' + p.slug === route);
+    crumbs.push({ name: lang === 'es' ? 'Diario de la Isla' : 'Island Journal', item: SITE + pathFor('blog', lang) });
+    crumbs.push({ name: post.title[lang], item: url });
+    blocks.push({
+      '@context': 'https://schema.org', '@type': 'BlogPosting',
+      '@id': url, mainEntityOfPage: url, url,
+      headline: post.title[lang], description: post.excerpt[lang],
+      image: abs(post.image), inLanguage: lang,
+      datePublished: post.date, dateModified: post.date,
+      author: { '@type': 'Organization', name: 'Florita 39', url: `${SITE}/` },
+      publisher: {
+        '@type': 'Organization', name: 'Florita 39', url: `${SITE}/`,
+        logo: { '@type': 'ImageObject', url: `${SITE}/assets/logos/florita-iso-blue.png` },
+      },
+      isPartOf: { '@type': 'Blog', name: lang === 'es' ? 'Diario de la Isla — Florita 39' : 'Island Journal — Florita 39', url: SITE + pathFor('blog', lang) },
     });
   } else {
     crumbs.push({ name: META[route][lang][0].split('—')[0].trim(), item: url });
@@ -235,7 +270,9 @@ function renderRoute(route) {
   const el = React.createElement;
   const screen = base === 'room'
     ? el(globalThis.RoomDetailScreen, { roomId: route.split(':')[1], onNav: noop })
-    : el(globalThis[SCREEN_FOR[base]], { onNav: noop });
+    : base === 'blogpost'
+      ? el(globalThis.BlogPostScreen, { slug: route.split(':')[1], onNav: noop })
+      : el(globalThis[SCREEN_FOR[base]], { onNav: noop });
   return renderToString(
     el('div', { className: 'f39-site' },
       el(globalThis.Header, { route: base, onNav: noop, onImage: base === 'home' }),
@@ -282,6 +319,10 @@ if (!template.includes('<div id="root"></div>')) {
 }
 const urls = [];
 for (const route of ROUTES) {
+  // Blog screens carry full per-language content, so they render once per
+  // language; every other screen renders in English and is dictionary-
+  // translated (chrome included) for the /es tree.
+  const isBlog = route === 'blog' || route.startsWith('blogpost:');
   globalThis.F39_LANG = 'en';
   const bodyEN = renderRoute(route);
   for (const lang of ['en', 'es']) {
@@ -290,7 +331,11 @@ for (const route of ROUTES) {
     const url = SITE + path;
     const altEN = SITE + pathFor(route, 'en');
     const altES = SITE + pathFor(route, 'es');
-    const body = lang === 'es' ? translateHTML(bodyEN) : bodyEN;
+    let body = bodyEN;
+    if (lang === 'es') {
+      if (isBlog) { globalThis.F39_LANG = 'es'; body = renderRoute(route); globalThis.F39_LANG = 'en'; }
+      body = translateHTML(body);
+    }
     // Home keeps the dedicated 1200×630 share card; other pages use their hero.
     const ogFile = route === 'home' ? OG_DEFAULT : (OGIMG[route] || OG_DEFAULT);
     const ogImg = SITE + '/assets/' + ogFile;

@@ -20,7 +20,7 @@ function IslandScreen({ onNav }) {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-7)' }}>
             {I.highlights.map((h) => (
               <div key={h.name} className="f39-card" style={{ overflow: 'hidden' }}>
-                <img src={F39_ASSETS + '/' + h.image} alt={h.name} style={{ width: '100%', height: 260, objectFit: 'cover' }} />
+                <img loading="lazy" decoding="async" src={F39_ASSETS + '/' + h.image} alt={h.name} style={{ width: '100%', height: 260, objectFit: 'cover' }} />
                 <div style={{ padding: 24 }}>
                   <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 12 }}>
                     <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-h3)', margin: 0, color: 'var(--text-strong)' }}>{h.name}</h3>
@@ -35,7 +35,7 @@ function IslandScreen({ onNav }) {
       </section>
 
       <section className="f39-section--tight" style={{ position: 'relative', overflow: 'hidden' }}>
-        <img src={F39_ASSETS + '/marketing/playa/m5709.jpg'} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+        <img loading="lazy" decoding="async" src={F39_ASSETS + '/marketing/playa/m5709.jpg'} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(3,22,42,.92), rgba(3,22,42,.55) 60%, rgba(3,22,42,.35))' }}></div>
         <div className="f39-container" style={{ position: 'relative', maxWidth: 'var(--container-xl)', paddingTop: 40, paddingBottom: 40 }}>
           <div style={{ maxWidth: '42ch', color: '#fff' }}>

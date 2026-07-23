@@ -28,7 +28,7 @@ function ZamaScreen({ onNav }) {
               </div>
               <a className="f39-btn f39-btn--primary" href="https://wa.me/5219991732538" target="_blank" rel="noreferrer">Reserve your day</a>
             </div>
-            <img src={F39_ASSETS + '/' + Z.images[0]} alt="Zama Beach Club" style={{ width: '100%', height: 460, objectFit: 'cover', borderRadius: 'var(--radius-lg)' }} />
+            <img loading="lazy" decoding="async" src={F39_ASSETS + '/' + Z.images[0]} alt="Zama Beach Club" style={{ width: '100%', height: 460, objectFit: 'cover', borderRadius: 'var(--radius-lg)' }} />
           </div>
         </div>
       </section>
@@ -37,7 +37,7 @@ function ZamaScreen({ onNav }) {
         <div className="f39-container" style={{ maxWidth: 'var(--container-xl)' }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
             {Z.images.slice(1).map((g) => (
-              <img key={g} src={F39_ASSETS + '/' + g} alt="" style={{ width: '100%', height: 280, objectFit: 'cover', borderRadius: 'var(--radius-md)' }} />
+              <img loading="lazy" decoding="async" key={g} src={F39_ASSETS + '/' + g} alt="" style={{ width: '100%', height: 280, objectFit: 'cover', borderRadius: 'var(--radius-md)' }} />
             ))}
           </div>
         </div>

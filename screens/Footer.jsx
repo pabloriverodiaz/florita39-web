@@ -26,6 +26,7 @@ function Footer({ onNav }) {
             <a href={window.F39path('experiences')} onClick={(e) => { e.preventDefault(); onNav('experiences'); }}>Experiences &amp; tours</a>
             <a href={window.F39path('zama')} onClick={(e) => { e.preventDefault(); onNav('zama'); }}>Zama Beach Club</a>
             <a href={window.F39path('faq')} onClick={(e) => { e.preventDefault(); onNav('faq'); }}>FAQ</a>
+            <a href={window.F39path('blog')} onClick={(e) => { e.preventDefault(); onNav('blog'); }}>Island Journal</a>
           </div>
           <div className="f39-footer__col">
             <p className="f39-footer__title">Visit</p>
