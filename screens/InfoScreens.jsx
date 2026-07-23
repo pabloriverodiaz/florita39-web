@@ -51,9 +51,9 @@ function AboutScreen({ onNav }) {
               <div style={{ marginTop: 26 }}><Button variant="secondary" onClick={() => onNav('rooms')}>See the rooms</Button></div>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
-              <img src={F39_ASSETS + '/areas/terraza/05.jpg'} alt="" style={{ borderRadius: 'var(--radius-lg)', height: 320, objectFit: 'cover', gridRow: 'span 2' }} />
-              <img src={F39_ASSETS + '/rooms/florita-1/04.jpg'} alt="" style={{ borderRadius: 'var(--radius-lg)', height: 153, objectFit: 'cover' }} />
-              <img src={F39_ASSETS + '/areas/fachada/16.jpg'} alt="" style={{ borderRadius: 'var(--radius-lg)', height: 153, objectFit: 'cover' }} />
+              <img loading="lazy" decoding="async" src={F39_ASSETS + '/areas/terraza/05.jpg'} alt="" style={{ borderRadius: 'var(--radius-lg)', height: 320, objectFit: 'cover', gridRow: 'span 2' }} />
+              <img loading="lazy" decoding="async" src={F39_ASSETS + '/rooms/florita-1/04.jpg'} alt="" style={{ borderRadius: 'var(--radius-lg)', height: 153, objectFit: 'cover' }} />
+              <img loading="lazy" decoding="async" src={F39_ASSETS + '/areas/fachada/16.jpg'} alt="" style={{ borderRadius: 'var(--radius-lg)', height: 153, objectFit: 'cover' }} />
             </div>
           </div>
         </div>

@@ -31,7 +31,7 @@ function RoomDetailScreen({ roomId, onNav }) {
                    style={{ width: '100%', height: 'min(52vh, 480px)', objectFit: 'cover', borderRadius: 'var(--radius-lg)' }} />
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10, marginTop: 10 }}>
                 {gallery.map((g) => (
-                  <img key={g} src={F39_ASSETS + '/' + g} alt="" onClick={() => setMain(g)}
+                  <img loading="lazy" decoding="async" key={g} src={F39_ASSETS + '/' + g} alt="" onClick={() => setMain(g)}
                        style={{ width: '100%', height: 92, objectFit: 'cover', borderRadius: 'var(--radius-md)', cursor: 'pointer',
                                 outline: g === main ? '2px solid var(--color-primary)' : 'none', outlineOffset: 2, opacity: g === main ? 1 : 0.82 }} />
                 ))}

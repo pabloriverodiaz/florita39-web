@@ -36,7 +36,7 @@ function RestaurantScreen({ onNav }) {
         <div className="f39-container" style={{ maxWidth: 'var(--container-xl)' }}>
           <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: 14, height: 360 }}>
             {R.gallery.map((g, i) => (
-              <img key={g} src={F39_ASSETS + '/' + g} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'var(--radius-md)', gridRow: i === 0 ? 'span 2' : 'auto', display: i > 2 ? 'none' : 'block' }} />
+              <img loading="lazy" decoding="async" key={g} src={F39_ASSETS + '/' + g} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'var(--radius-md)', gridRow: i === 0 ? 'span 2' : 'auto', display: i > 2 ? 'none' : 'block' }} />
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: 'var(--space-8)' }}>

@@ -67,7 +67,7 @@ function AmenitiesScreen({ onNav }) {
             ].map((c) => (
               <button key={c.r} onClick={() => onNav(c.r)} className="f39-card" style={{ padding: 0, overflow: 'hidden', border: 'none', cursor: 'pointer', textAlign: 'left', background: 'var(--surface-card)' }}>
                 <div style={{ position: 'relative', height: 200 }}>
-                  <img src={F39_ASSETS + '/' + c.img} alt={c.t} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img loading="lazy" decoding="async" src={F39_ASSETS + '/' + c.img} alt={c.t} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(4,32,58,0), rgba(4,32,58,.55))' }}></div>
                 </div>
                 <div style={{ padding: 20 }}>
